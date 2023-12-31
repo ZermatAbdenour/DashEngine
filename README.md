@@ -24,6 +24,7 @@ Welcome to DashEngine, a lightweight C++ framework for creating dynamic 3D and 2
 # Getting Started
 
 ## Windows
+You will need git and CMake to build and run the project
 1. **Clone the DashEngine repository:**
   ```bash
   git clone https://github.com/ZermatAbdenour/DashEngine.git
@@ -44,7 +45,7 @@ Welcome to DashEngine, a lightweight C++ framework for creating dynamic 3D and 2
     Open your integrated development environment (IDE).
   - Right-click on the Game project in the IDE.
   - Select "Set as Startup Project" to ensure that when you run the project, the Game executable is launched.
-  - Run Your Game Executable:
+  - Build and Run Your Game Executable:
 
 # License
 MIT License
