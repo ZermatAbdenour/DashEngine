@@ -24,8 +24,9 @@ Welcome to DashEngine, a lightweight C++ framework for creating dynamic 3D and 2
 
 ## Windows
 1. **Clone the DashEngine repository:**
-   ```bash
-   git clone https://github.com/ZermatAbdenour/DashEngine.git 
+  ```bash
+  git clone https://github.com/ZermatAbdenour/DashEngine.git
+  ```
 2. **Create a Build Directory:**
 
   ```bash
