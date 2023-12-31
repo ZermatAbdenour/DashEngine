@@ -1,0 +1,10 @@
+# Ignore build directory
+/build/
+
+# Ignore x64 directory
+/x64/
+
+/.vs/
+
+# Ignore DashEngine.sln
+DashEngine.sln

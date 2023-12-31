@@ -1,0 +1,24 @@
+﻿  glad.c
+  Camera.cpp
+  Component.cpp
+  Engine.cpp
+C:\Projects\VisualStudio\DashEngine\DashEngine\Engine.cpp(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Projects\VisualStudio\DashEngine\DashEngine\Engine.cpp(78,42): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Projects\VisualStudio\DashEngine\DashEngine\Engine.cpp(79,34): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Entity.cpp
+C:\Projects\VisualStudio\DashEngine\DashEngine\Entity.cpp(48,28): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Projects\VisualStudio\DashEngine\DashEngine\Entity.cpp(61,59): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Inputs.cpp
+  MeshData.cpp
+C:\Projects\VisualStudio\DashEngine\DashEngine\MeshData.cpp(139,47): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  MeshRenderer.cpp
+  OrthographicCamera.cpp
+  PrespectiveCamera.cpp
+  ResourceManagement.cpp
+  Scene.cpp
+  Shader.cpp
+  SpriteRenderer.cpp
+  texture.cpp
+  TimeUtils.cpp
+  Generating Code...
+  DashEngine.vcxproj -> C:\Projects\VisualStudio\DashEngine\x64\Debug\DashEngine.lib
