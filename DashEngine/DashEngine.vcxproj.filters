@@ -16,14 +16,14 @@
     <Filter Include="Header Files\Entities">
       <UniqueIdentifier>{3adc5a5c-d280-4270-b419-21825c6a4367}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entities">
-      <UniqueIdentifier>{ec50bd2f-e545-44be-b776-717fcc10b423}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Componenets">
       <UniqueIdentifier>{39d9d90b-9598-434f-9c0f-188a9052c278}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Components">
       <UniqueIdentifier>{806aa2f2-f467-470d-937c-00546dc26f0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Shaders">
+      <UniqueIdentifier>{458af772-3050-42a3-9e1c-a21d90201d2f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +129,15 @@
   <ItemGroup>
     <None Include="Entity.inl">
       <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\Game\Resources\Shaders\spritevertex.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Game\Resources\Shaders\vertex.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Game\Resources\Shaders\fragment.frag">
+      <Filter>Resource Files\Shaders</Filter>
     </None>
   </ItemGroup>
 </Project>

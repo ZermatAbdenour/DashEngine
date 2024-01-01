@@ -1,6 +1,6 @@
 #include "print.h"
 #include <DashEngine/Entity.h>
-#include <TimeUtils.h>
+#include <DashEngine/TimeUtils.h>
 #include<DashEngine/Inputs.h>
 void Print::Update()
 {

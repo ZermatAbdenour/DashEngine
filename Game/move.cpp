@@ -4,8 +4,6 @@
 #include<DashEngine/TimeUtils.h>
 void move::Update()
 {
-    entity->LocalPosition += glm::vec3(0,0,5 * TimeUtils::deltaTime);
-    //std::cout << 1/ Time::deltaTime << std::endl;
-
+    entity->EulerAngles = glm::vec3(45, 180 * sin(TimeUtils::time), 0);
 }
 

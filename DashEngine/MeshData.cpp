@@ -17,18 +17,22 @@ MeshData::~MeshData()
     glDeleteVertexArrays(1, &VAO);
 }
 
-MeshData::MeshData(std::vector<float> verticies, std::vector<unsigned int> indicies, std::vector<float> uvs, bool threeD)
+MeshData::MeshData(std::vector<float> verticies, std::vector<unsigned int> indicies, std::vector<float> uvs)
 {
-    ThreeD = threeD;
-    if (ThreeD) 
-        Verticies = interleaveData3D(verticies,uvs);
-    else
-        Verticies = interleaveData2D(verticies, uvs);
+    ThreeD = false;
+    Verticies = interleaveData2D(verticies, uvs);
+    Indicies = indicies;
+}
+
+MeshData::MeshData(std::vector<float> verticies, std::vector<unsigned int> indicies, std::vector<float> uvs, std::vector<float> normals)
+{
+    ThreeD = true;
+    Verticies = interleaveData3D(verticies, uvs,normals);
     Indicies = indicies;
 }
 
 
-std::vector<float> MeshData::interleaveData3D(const std::vector<float>& vertices, const std::vector<float>& uvs)
+std::vector<float> MeshData::interleaveData3D(const std::vector<float>& vertices, const std::vector<float>& uvs, const std::vector<float>& normals)
 {
     // Assuming vertices and uvs have the same size and are properly formatted
 
@@ -46,6 +50,12 @@ std::vector<float> MeshData::interleaveData3D(const std::vector<float>& vertices
         // Copy texture coordinate data
         interleavedData.push_back(uvs[i * 2]);
         interleavedData.push_back(uvs[i * 2 + 1]);
+
+        //Copy Normals
+        interleavedData.push_back(normals[i * 3]);
+        interleavedData.push_back(normals[i * 3 + 1]);
+        interleavedData.push_back(normals[i * 3 + 2]);
+
     }
 
     return interleavedData;
@@ -94,12 +104,16 @@ void MeshData::LoadToGPU()
 
     if (ThreeD) {
         //Positions
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
         glEnableVertexAttribArray(0);
 
         //UVs
-        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
         glEnableVertexAttribArray(1);
+
+        //Normals
+        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(5 * sizeof(float)));
+        glEnableVertexAttribArray(2);
     }
     else {
         //2d Mesh

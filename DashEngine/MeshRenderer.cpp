@@ -27,7 +27,10 @@ void DashEngine::MeshRenderer::Update()
     shader->setMatrix4fv("view", Camera::ActiveCamera->GetViewMatrice());
     shader->setMatrix4fv("projection", Camera::ActiveCamera->GetProjectionMatrice());
     texture->Use();
-    meshData->DrawMesh();
 
-    //std::cout << "Mesh Rendered" << std::endl;
+    //Set Uniforms
+    shader->setVec3("LightColor" ,glm::vec3(1,1,1));
+    shader->setVec3("LightDirection", glm::vec3(1, 0, -1));
+
+    meshData->DrawMesh();
 }
