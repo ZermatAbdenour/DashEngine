@@ -139,5 +139,8 @@
     <None Include="..\Game\Resources\Shaders\fragment.frag">
       <Filter>Resource Files\Shaders</Filter>
     </None>
+    <None Include="..\Game\Resources\Shaders\spritefragment.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

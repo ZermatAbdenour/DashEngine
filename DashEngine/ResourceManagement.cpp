@@ -126,10 +126,10 @@ std::vector<float> quadvertices = {
 
 std::vector<float> quaduvs = {
     // texture coords
-    0.0f,0.0f,
-    0.0f,1.0f,
     1.0f,1.0f,
-    1.0f,0.0f
+    1.0f,0.0f,
+    0.0f,0.0f,
+    0.0f,1.0f
 };
 
 std::vector<unsigned int> quadindices = {
@@ -176,10 +176,17 @@ void ResourceManagement::LoadResources()
     //shaders
     ResourceManagement::Shaders::AddShader("DefaultShader", new Shader("Resources/Shaders/vertex.vert", "Resources/Shaders/fragment.frag"));
 
-    //ResourceManagement::Shaders::AddShader("SpriteShader", new Shader("Resources/Shaders/spritevertex.vert", "Resources/Shaders/fragment.frag"));
+    ResourceManagement::Shaders::AddShader("SpriteShader", new Shader("Resources/Shaders/spritevertex.vert", "Resources/Shaders/spritefragment.frag"));
 
     //Textures
-    ResourceManagement::Textures::AddTexture("Bricks", new Texture("Resources/Textures/wall.jpg"));
+    Texture::TextureParms ThreeDTextureParms = Texture::TextureParms();
+    ResourceManagement::Textures::AddTexture("Bricks", new Texture("Resources/Textures/wall.jpg", ThreeDTextureParms));
+    
+    Texture::TextureParms TwoDTextureParms = Texture::TextureParms();
+    TwoDTextureParms.ImageFormat = GL_RGBA;
+    TwoDTextureParms.InternalFormat = GL_RGBA;
+
+    ResourceManagement::Textures::AddTexture("Circle", new Texture("Resources/Sprites/PingPong/awesomeface.png", TwoDTextureParms));
     //primitives
 
     ResourceManagement::Primitives::AddPrimitive("Cube", new MeshData(cubevertices, cubeindices, cubeuvs, cubenormals));

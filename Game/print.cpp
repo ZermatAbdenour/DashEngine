@@ -10,6 +10,7 @@ void Print::Update()
     if(Inputs::GetMouseButton(0))
         std::cout << Inputs::Mouse::delta.x<<"|" << Inputs::Mouse::delta.y << std::endl;
 
+
 }
 
 void Print::Start()

@@ -11,20 +11,19 @@ myScene::myScene()
 {
     Entity* camera = new Entity();
     AddEntitie(camera);
-    camera->addComponent<PrespectiveCamera>();
+    camera->addComponent<OrthographicCamera>();
 
     camera->LocalPosition = glm::vec3(0,0,0);
     camera->EulerAngles = glm::vec3(0,0, 0);
 
-    Entity* Cube = new Entity();
-    AddEntitie(Cube);
-    Cube->LocalPosition = glm::vec3(0, 0, 5);
-    Cube->EulerAngles = glm::vec3(45, 0, 0);
-    Cube->addComponent<MeshRenderer>();
-    Cube->addComponent<move>();
+    Entity* Circle = new Entity();
+    AddEntitie(Circle);
+    Circle->LocalPosition = glm::vec3(0, 0, 5);
+    Circle->EulerAngles = glm::vec3(0, 0, 0);
+    Circle->Scale = glm::vec3(1);
+    SpriteRenderer* sprite = Circle->addComponent<SpriteRenderer>();
+    sprite->texture = ResourceManagement::Textures::GetTexture("Circle");
 
-    Entity* CubeChild = new Entity();
-    Cube->addChild(CubeChild);
-    CubeChild->LocalPosition = glm::vec3(1, 0, 0);
-    CubeChild->addComponent<Print>();
+    Circle->addComponent<move>();
+
 }

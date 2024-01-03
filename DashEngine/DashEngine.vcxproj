@@ -168,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Game\Resources\Shaders\fragment.frag" />
+    <None Include="..\Game\Resources\Shaders\spritefragment.frag" />
     <None Include="..\Game\Resources\Shaders\spritevertex.vert" />
     <None Include="..\Game\Resources\Shaders\vertex.vert" />
     <None Include="Entity.inl" />

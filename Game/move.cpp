@@ -2,8 +2,13 @@
 #include <iostream>
 #include <DashEngine/Entity.h>
 #include<DashEngine/TimeUtils.h>
+#include<DashEngine/Inputs.h>
 void move::Update()
 {
-    entity->EulerAngles = glm::vec3(45, 180 * sin(TimeUtils::time), 0);
+
+    if (Inputs::GetMouseButton(0)) {
+        entity->EulerAngles += entity->getRight() * -Inputs::Mouse::delta.y + glm::vec3(0, Inputs::Mouse::delta.x, 0);
+    }
+
 }
 

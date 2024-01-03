@@ -51,7 +51,10 @@ Engine::Engine() {
     
 
     glEnable(GL_DEPTH_TEST);
-
+    //Enable Blending to render transparent textures
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
     //load Resources
     ResourceManagement::LoadResources();
 
