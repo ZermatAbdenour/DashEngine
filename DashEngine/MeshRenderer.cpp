@@ -16,7 +16,7 @@ DashEngine::MeshRenderer::MeshRenderer()
 
 void DashEngine::MeshRenderer::Start()
 {
-    meshData->LoadToGPU();
+    mesh->Load();
 }
 
 void DashEngine::MeshRenderer::Update()
@@ -26,19 +26,50 @@ void DashEngine::MeshRenderer::Update()
     shader->setMatrix4fv("model", entity->Model);
     shader->setMatrix4fv("view", Camera::ActiveCamera->GetViewMatrice());
     shader->setMatrix4fv("projection", Camera::ActiveCamera->GetProjectionMatrice());
+    
 
+    shader->setVec3("u_viewPos", Camera::ActiveCamera->entity->GetGlobalPosition());
     //Settup the matereial
-    shader->setVec3("material.BaseColor", glm::vec3(1, 1, 1));
-    shader->setInt("material.useTexture", 1);
-    shader->setVec3("material.ambient", glm::vec3(0.0215, 0.1745, 0.0215));
-    shader->setVec3("material.diffuse", glm::vec3(0.07568, 0.61424, 0.07568));
-    shader->setVec3("material.specular", glm::vec3(0.633, 0.727811, 0.633));
-    shader->setFloat("material.shininess", 32);
-    texture->Use();
+    shader->setVec3("u_material.baseColor", glm::vec3(1, 1, 1));
 
-    //Set Uniforms
-    shader->setVec3("LightColor" ,glm::vec3(1,1,1));
-    shader->setVec3("LightDirection", glm::vec3(0, 0, -1));
+    //Maps
+    shader->setFloat("u_material.shininess", 30);
 
-    meshData->DrawMesh();
+    //setup directional light
+    shader->setVec3("u_directionalLight.direction", glm::vec3(0, 0, 1));
+    shader->setVec3("u_directionalLight.ambient", glm::vec3(0.3f,0.3f,0.3f));
+    shader->setVec3("u_directionalLight.diffuse", glm::vec3(1, 1, 1));
+    shader->setVec3("u_directionalLight.specular", glm::vec3(1, 1, 1));
+
+    //setup point lights
+
+    shader->setVec3("u_pointLights[0].position", glm::vec3(3, 0, 1));
+    shader->setVec3("u_pointLights[0].ambient", glm::vec3(0.3f, 0.3f, 0.3f));
+    shader->setVec3("u_pointLights[0].diffuse", glm::vec3(1, 1, 1));
+    shader->setVec3("u_pointLights[0].specular", glm::vec3(1, 1, 1));
+    
+    shader->setFloat("u_pointLights[0].constant", 1.0);
+    shader->setFloat("u_pointLights[0].linear", 0.7);
+    shader->setFloat("u_pointLights[0].quadratic", 1.8);
+
+    shader->setVec3("u_pointLights[1].position", glm::vec3(0, 0,5));
+    shader->setVec3("u_pointLights[1].ambient", glm::vec3(0.3f, 0,0));
+    shader->setVec3("u_pointLights[1].diffuse", glm::vec3(1, 0, 0));
+    shader->setVec3("u_pointLights[1].specular", glm::vec3(1, 1, 1));
+
+    shader->setFloat("u_pointLights[1].constant", 1.0);
+    shader->setFloat("u_pointLights[1].linear", 0.7);
+    shader->setFloat("u_pointLights[1].quadratic", 1.8);
+
+    //setup spot lights
+    shader->setVec3("u_spotLights[0].position", Camera::ActiveCamera->entity->GetGlobalPosition());
+    shader->setVec3("u_spotLights[0].direction", Camera::ActiveCamera->entity->forward);
+    shader->setVec3("u_spotLights[0].ambient", glm::vec3(0, 0, 0.3f));
+    shader->setVec3("u_spotLights[0].diffuse", glm::vec3(0, 0, 1));
+    shader->setVec3("u_spotLights[0].specular", glm::vec3(0, 0, 1));
+
+    shader->setFloat("u_spotLights[0].cutOff", cos(glm::radians(15.0f)));
+    shader->setFloat("u_spotLights[0].outerCutOff", cos(glm::radians(30.0f)));
+
+    mesh->Draw(*shader);
 }

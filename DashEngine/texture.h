@@ -4,22 +4,15 @@
 namespace DashEngine {
     class Texture {
     public:
-        struct TextureParms {
-            unsigned int InternalFormat;
-            unsigned int ImageFormat;
-            bool GenerateMipMap;
-            TextureParms() {
-                InternalFormat = GL_RGB;
-                ImageFormat = GL_RGB;
-                GenerateMipMap = true;
-            }
+        enum TextureTypes {
+            Diffuse,
+            Specular,
         };
     public:
         unsigned int ID;
-        TextureParms textureparms;
-        Texture(const char* TexturePath, TextureParms parms);
-        void Use();
-
-
+        TextureTypes TextureType;
+        Texture(const char* TexturePath, TextureTypes type = TextureTypes::Diffuse);
+        void Bind();
+        void ActivateAndBind(int texture);
     };
 }

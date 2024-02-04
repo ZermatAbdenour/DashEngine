@@ -30,8 +30,9 @@ void Inputs::ProcessInputs()
     //Process mouse
     double xpos, ypos;
     glfwGetCursorPos(window, &xpos, &ypos);
-    xpos = ((float)WINDOWWIDTH / width) * xpos;
-    ypos = ((float)WINDOWHEIGHT / height) * ypos;
+    //xpos =  ((float)Engine::Instance->WindowWidth / width) * xpos;
+    //ypos = STARTWINDOWHEIGHT- ((float)STARTWINDOWHEIGHT / height) * ypos;
+    ypos = Engine::Instance->WindowHeight - ypos;
     glm::vec2 newposition = glm::vec2(xpos, ypos);
 
     Inputs::Mouse::delta = newposition - Inputs::Mouse::position;
@@ -96,7 +97,7 @@ void DashEngine::Inputs::ProcesssMouseButton(unsigned int button)
 Inputs* Inputs::InitInputs()
 {
     if (Instance == nullptr)
-        Instance = new Inputs(Engine::window);
+        Instance = new Inputs(Engine::Instance->Window);
     return Instance;
 }
 

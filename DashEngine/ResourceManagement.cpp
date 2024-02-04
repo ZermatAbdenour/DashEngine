@@ -5,37 +5,61 @@ using namespace DashEngine;
 
 //Premitives
 
-std::vector<float> cubevertices = {
+std::vector<Mesh::Vertex> cubevertices = {
     // Front
-     -0.5, -0.5, -0.5,
-      0.5, -0.5, -0.5,
-      0.5,  0.5, -0.5,
-     -0.5,  0.5, -0.5,
+    Mesh::Vertex(glm::vec3(-0.5, -0.5, -0.5),glm::vec3(0, 0, -1),glm::vec2(0, 1)),
+    Mesh::Vertex(glm::vec3(0.5, -0.5, -0.5),glm::vec3(0, 0, -1),glm::vec2(1, 1)),
+    Mesh::Vertex(glm::vec3(0.5,  0.5, -0.5),glm::vec3(0, 0, -1),glm::vec2(1, 0)),
+    Mesh::Vertex(glm::vec3(-0.5,  0.5, -0.5),glm::vec3(0, 0, -1),glm::vec2(0, 0)),
+     //-0.5, -0.5, -0.5,
+     //0.5, -0.5, -0.5,
+     //0.5,  0.5, -0.5,
+     //-0.5,  0.5, -0.5,
      // Back
-     -0.5, -0.5,  0.5,
-      0.5, -0.5,  0.5,
-      0.5,  0.5,  0.5,
-     -0.5,  0.5,  0.5,
+    Mesh::Vertex(glm::vec3(-0.5, -0.5, 0.5),glm::vec3(0, 0, 1),glm::vec2(0, 1)),
+    Mesh::Vertex(glm::vec3(0.5, -0.5, 0.5),glm::vec3(0, 0, 1),glm::vec2(1, 1)),
+    Mesh::Vertex(glm::vec3(0.5,  0.5, 0.5),glm::vec3(0, 0, 1),glm::vec2(1, 0)),
+    Mesh::Vertex(glm::vec3(-0.5,  0.5, 0.5),glm::vec3(0, 0, 1),glm::vec2(0, 0)),
+     //-0.5, -0.5,  0.5,
+     // 0.5, -0.5,  0.5,
+     // 0.5,  0.5,  0.5,
+     //-0.5,  0.5,  0.5,
      // Left
-     -0.5, -0.5, -0.5,
-     -0.5,  0.5, -0.5,
-     -0.5,  0.5,  0.5,
-     -0.5, -0.5,  0.5,
-     // Right
-      0.5, -0.5, -0.5,
-      0.5,  0.5, -0.5,
-      0.5,  0.5,  0.5,
-      0.5, -0.5,  0.5,
+    Mesh::Vertex(glm::vec3(-0.5, -0.5, -0.5),glm::vec3(-1, 0, 0),glm::vec2(1, 1)),
+    Mesh::Vertex(glm::vec3(-0.5, 0.5, -0.5),glm::vec3(-1, 0, 0),glm::vec2(0, 1)),
+    Mesh::Vertex(glm::vec3(-0.5,  0.5, 0.5),glm::vec3(-1, 0, 0),glm::vec2(0, 0)),
+    Mesh::Vertex(glm::vec3(-0.5,  -0.5, 0.5),glm::vec3(-1, 0, 0),glm::vec2(1, 0)),
+     //-0.5, -0.5, -0.5,
+     //-0.5,  0.5, -0.5,
+     //-0.5,  0.5,  0.5,
+     //-0.5, -0.5,  0.5,
+     // Right    
+    Mesh::Vertex(glm::vec3(0.5, -0.5, -0.5),glm::vec3(1, 0, 0),glm::vec2(0, 1)),
+    Mesh::Vertex(glm::vec3(0.5, 0.5, -0.5),glm::vec3(1, 0, 0),glm::vec2(1, 1)),
+    Mesh::Vertex(glm::vec3(0.5,  0.5, 0.5),glm::vec3(1, 0, 0),glm::vec2(1, 0)),
+    Mesh::Vertex(glm::vec3(0.5,  -0.5, 0.5),glm::vec3(1, 0, 0),glm::vec2(0, 0)),
+      //0.5, -0.5, -0.5,
+      //0.5,  0.5, -0.5,
+      //0.5,  0.5,  0.5,
+      //0.5, -0.5,  0.5,
       // Bottom
-      -0.5, -0.5, -0.5,
-       0.5, -0.5, -0.5,
-       0.5, -0.5,  0.5,
-      -0.5, -0.5,  0.5,
+    Mesh::Vertex(glm::vec3(-0.5, -0.5, -0.5),glm::vec3(0, -1, 0),glm::vec2(0, 1)),
+    Mesh::Vertex(glm::vec3(0.5, -0.5, -0.5),glm::vec3(0, -1, 0),glm::vec2(1, 1)),
+    Mesh::Vertex(glm::vec3(0.5,  -0.5, 0.5),glm::vec3(0, -1, 0),glm::vec2(1, 0)),
+    Mesh::Vertex(glm::vec3(-0.5,  -0.5, 0.5),glm::vec3(0, -1, 0),glm::vec2(0, 0)),
+      //-0.5, -0.5, -0.5,
+       //0.5, -0.5, -0.5,
+       //0.5, -0.5,  0.5,
+      //-0.5, -0.5,  0.5,
       // Top
-      -0.5,  0.5, -0.5,
-       0.5,  0.5, -0.5,
-       0.5,  0.5,  0.5,
-      -0.5,  0.5,  0.5
+    Mesh::Vertex(glm::vec3(-0.5, 0.5, -0.5),glm::vec3(0, 1, 0),glm::vec2(0, 1)),
+    Mesh::Vertex(glm::vec3(0.5, 0.5, -0.5),glm::vec3(0, 1, 0),glm::vec2(1, 1)),
+    Mesh::Vertex(glm::vec3(0.5,  0.5, 0.5),glm::vec3(0, 1, 0),glm::vec2(1, 0)),
+    Mesh::Vertex(glm::vec3(-0.5, 0.5, 0.5),glm::vec3(0, 1, 0),glm::vec2(0, 0)),
+      //-0.5,  0.5, -0.5,
+       //0.5,  0.5, -0.5,
+       //0.5,  0.5,  0.5,
+      //-0.5,  0.5,  0.5
 };
 
 std::vector<float> cubeuvs = {
@@ -82,7 +106,7 @@ std::vector<unsigned int> cubeindices = {
 
 std::vector<float> cubenormals = {
     // Front
-    0, 0, -1,
+    //0, 0, -1,
     0, 0, -1,
     0, 0, -1,
     0, 0, -1,
@@ -118,10 +142,10 @@ std::vector<float> cubenormals = {
 
 std::vector<float> quadvertices = {
     //positions           
-    -0.5f,-0.5f,
-    -0.5f,0.5f,
-    0.5f,0.5f,
-    0.5f,-0.5f
+    -0.5f,-0.5f,0.0f,
+    -0.5f,0.5f,0.0f,
+    0.5f,0.5f,0.0f,
+    0.5f,-0.5f,0.0f
 };
 
 std::vector<float> quaduvs = {
@@ -150,6 +174,11 @@ Shader* ResourceManagement::Shaders::GetShader(std::string name)
 }
 
 std::map<std::string, Texture*> ResourceManagement::Textures::textures = {};
+int ResourceManagement::Textures::LoadedTextures = 0;
+std::string DashEngine::ResourceManagement::Textures::UniqueName()
+{
+    return std::to_string(LoadedTextures++);
+}
 void ResourceManagement::Textures::AddTexture(std::string name, Texture* texture)
 {
     ResourceManagement::Textures::textures[name] = texture;
@@ -160,13 +189,13 @@ Texture* ResourceManagement::Textures::GetTexture(std::string name)
     return ResourceManagement::Textures::textures[name];
 }
 
-std::map<std::string, MeshData*> ResourceManagement::Primitives::primitives = {};
-void DashEngine::ResourceManagement::Primitives::AddPrimitive(std::string name, MeshData* primitive)
+std::map<std::string, Mesh*> ResourceManagement::Primitives::primitives = {};
+void DashEngine::ResourceManagement::Primitives::AddPrimitive(std::string name, Mesh* primitive)
 {
     ResourceManagement::Primitives::primitives[name] = primitive;
 }
 
-MeshData* DashEngine::ResourceManagement::Primitives::GetPrimitive(std::string name)
+Mesh* DashEngine::ResourceManagement::Primitives::GetPrimitive(std::string name)
 {
     return ResourceManagement::Primitives::primitives[name];
 }
@@ -179,16 +208,15 @@ void ResourceManagement::LoadResources()
     ResourceManagement::Shaders::AddShader("SpriteShader", new Shader("Resources/Shaders/spritevertex.vert", "Resources/Shaders/spritefragment.frag"));
 
     //Textures
-    Texture::TextureParms ThreeDTextureParms = Texture::TextureParms();
-    ResourceManagement::Textures::AddTexture("Bricks", new Texture("Resources/Textures/wall.jpg", ThreeDTextureParms));
-    
-    Texture::TextureParms TwoDTextureParms = Texture::TextureParms();
-    TwoDTextureParms.ImageFormat = GL_RGBA;
-    TwoDTextureParms.InternalFormat = GL_RGBA;
+    ResourceManagement::Textures::AddTexture("Diffuse", new Texture("Resources/Textures/Maps/container.png"));
+    ResourceManagement::Textures::AddTexture("Specular", new Texture("Resources/Textures/Maps/container2_specular.png",Texture::TextureTypes::Specular));
 
-    ResourceManagement::Textures::AddTexture("Circle", new Texture("Resources/Sprites/PingPong/awesomeface.png", TwoDTextureParms));
+    //ResourceManagement::Textures::AddTexture("Circle", new Texture("Resources/Sprites/PingPong/awesomeface.png"));
     //primitives
 
-    ResourceManagement::Primitives::AddPrimitive("Cube", new MeshData(cubevertices, cubeindices, cubeuvs, cubenormals));
-    ResourceManagement::Primitives::AddPrimitive("Quad", new MeshData(quadvertices, quadindices, quaduvs));
+    std::vector<Texture> textures;
+    textures.push_back(*ResourceManagement::Textures::GetTexture("Diffuse"));
+    textures.push_back(*ResourceManagement::Textures::GetTexture("Specular"));
+    ResourceManagement::Primitives::AddPrimitive("Cube", new Mesh(cubevertices, cubeindices, textures));
+    //ResourceManagement::Primitives::AddPrimitive("Quad", new Mesh(quadvertices, quadindices, quaduvs));
 }

@@ -9,16 +9,16 @@
 namespace DashEngine {
 	class Engine
 	{
+    public:
+        static Engine* Instance;
+        int WindowWidth, WindowHeight;
+        GLFWwindow* Window;
+        Scene* ActiveScene;
 	public:
 		Engine();
 		~Engine();
 		bool isRunning();
-		void Update(Scene* scene);
-
-	private:
-		
-	public:
-		static GLFWwindow* window;
+        void Load(Scene* scene);
 	};
 }
 

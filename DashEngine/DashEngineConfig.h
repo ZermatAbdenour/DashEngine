@@ -1,6 +1,6 @@
 #pragma once
 
-#define WINDOWWIDTH 800
-#define WINDOWHEIGHT 600
+#define STARTWINDOWWIDTH 800
+#define STARTWINDOWHEIGHT 600
 
 #define WINDOWTITLE "DashEngine"

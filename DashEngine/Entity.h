@@ -21,6 +21,10 @@ namespace DashEngine {
         glm::vec3 EulerAngles;
         glm::vec3 Scale;
         glm::mat4 Model;
+
+        glm::vec3 forward;
+        glm::vec3 right;
+        glm::vec3 up;
         //hierarchy
 		std::vector<Entity*> Childs;
 		Entity* Parent;//if Parent == NULL means the Enitity is a root
@@ -43,6 +47,7 @@ namespace DashEngine {
 
         //Processing Entity
         glm::mat4 GetModel();
+        void UpdateEntityVectors();
 		void processEntity();
 
         //Manage Entity Componenets
@@ -52,12 +57,6 @@ namespace DashEngine {
         T* getComponent() const;
         template <typename T>
         void removeComponent();
-
-        //Direction Vectors
-        glm::vec3 getForward();
-        glm::vec3 getRight();
-        glm::vec3 getUp();
-
 	};
 
 

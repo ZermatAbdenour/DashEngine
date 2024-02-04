@@ -3,14 +3,10 @@
 #include "myScene.h"
 using namespace DashEngine;
 int main(void) {
-	Engine*e = new Engine();
+	Engine e = Engine();
 	myScene* s = new myScene();
 
-    
-	while (e->isRunning())
-	{
-		e->Update(s);
-	}
+    e.Load(s);
 
 	return 0;
 }

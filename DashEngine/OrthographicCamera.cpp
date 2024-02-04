@@ -3,11 +3,15 @@
 #include "Engine.h"
 
 using namespace DashEngine;
+
+OrthographicCamera::OrthographicCamera()
+{
+    CalculateProjectionMatrice();
+}
+
 void OrthographicCamera::CalculateProjectionMatrice()
 {
-    int width, height;
-    glfwGetWindowSize(Engine::window, &width, &height);
-    float aspectRatio = (float)width / height;
+    float aspectRatio = (float)Engine::Instance->WindowWidth / Engine::Instance->WindowHeight;
     float orthoLeft = -aspectRatio;
     float orthoRight = aspectRatio;
     float orthoBottom = -1.0f;
@@ -17,10 +21,6 @@ void OrthographicCamera::CalculateProjectionMatrice()
 
 glm::mat4 OrthographicCamera::GetProjectionMatrice()
 {
-    return ProjectionMat;
-}
 
-OrthographicCamera::OrthographicCamera()
-{
-    CalculateProjectionMatrice();
+    return ProjectionMat;
 }

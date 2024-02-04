@@ -65,16 +65,17 @@ std::vector<float> MeshData::interleaveData2D(const std::vector<float>& vertices
 {
     // Assuming vertices and uvs have the same size and are properly formatted
 
-    size_t numVertices = vertices.size() / 2; // Assuming each vertex has 2 components (x, y)
+    size_t numVertices = vertices.size() / 3; // Assuming each vertex has 3 components (x, y,z)
 
     std::vector<float> interleavedData;
 
-    interleavedData.reserve(numVertices * 4); // 2 for position + 2 for texture coordinates
+    interleavedData.reserve(numVertices * 5); // 3 for position + 2 for texture coordinates
 
     for (size_t i = 0; i < numVertices; ++i) {
         // Copy position data
-        interleavedData.push_back(vertices[i * 2]);
-        interleavedData.push_back(vertices[i * 2 + 1]);
+        interleavedData.push_back(vertices[i * 3]);
+        interleavedData.push_back(vertices[i * 3 + 1]);
+        interleavedData.push_back(vertices[i * 3 + 2]);
 
         // Copy texture coordinate data
         interleavedData.push_back(uvs[i * 2]);
@@ -119,11 +120,11 @@ void MeshData::LoadToGPU()
         //2d Mesh
 
         //Positions
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
         glEnableVertexAttribArray(0);
 
         //UVs
-        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float)));
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
         glEnableVertexAttribArray(1);
   
     }

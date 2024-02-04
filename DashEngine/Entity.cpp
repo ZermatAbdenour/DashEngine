@@ -49,6 +49,7 @@ void Entity::processEntity()
     
     //get Model
     GetModel();
+    UpdateEntityVectors();
 
 	//std::cout << "processing Entity id :" << _entityID << std::endl;
 	for (int i = 0;i < Components.size();i++) {
@@ -75,12 +76,22 @@ glm::mat4 Entity::GetModel()
     return Model;
 }
 
-glm::vec3 Entity::getForward() {
+void DashEngine::Entity::UpdateEntityVectors()
+{
+    glm::vec3 front;
 
-    glm::vec3 euler_angles_rad = glm::vec3(glm::radians(EulerAngles.x), glm::radians(EulerAngles.y), glm::radians(EulerAngles.z));
-    glm::quat quaternion = glm::quat(euler_angles_rad);
-    glm::vec3 forward = glm::normalize(quaternion * glm::vec3(0, 0, 1));
-    return forward;
+    front.x = sin(glm::radians(EulerAngles.y)) * cos(glm::radians(EulerAngles.x));
+    front.y = sin(glm::radians(EulerAngles.x));
+    front.z = -cos(glm::radians(EulerAngles.y)) * cos(glm::radians(EulerAngles.x));
+
+    front = glm::normalize(front);
+    // also re-calculate the Right and Up vector
+    glm::vec3 right = glm::normalize(glm::cross(front, glm::vec3(0, 1, 0)));  // normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
+    glm::vec3 up = glm::normalize(glm::cross(right, front));
+
+    this->forward = front;
+    this->up = up;
+    this->right = right;
 }
 
 glm::vec3 Entity::GetGlobalPosition()
@@ -92,15 +103,3 @@ void Entity::SetGlobalPosition(glm::vec3 position)
     LocalPosition = position - Parent->GetGlobalPosition();
 }
 
-glm::vec3 Entity::getRight() {
-    glm::vec3 euler_angles_rad = glm::vec3(glm::radians(EulerAngles.x), glm::radians(EulerAngles.y), glm::radians(EulerAngles.z));
-    glm::quat quaternion = glm::quat(euler_angles_rad);
-    glm::vec3 right = glm::normalize(quaternion * glm::vec3(1, 0, 0));
-    return right;
-}
-glm::vec3 Entity::getUp() {
-    glm::vec3 euler_angles_rad = glm::vec3(glm::radians(EulerAngles.x), glm::radians(EulerAngles.y), glm::radians(EulerAngles.z));
-    glm::quat quaternion = glm::quat(euler_angles_rad);
-    glm::vec3 Up = glm::normalize(quaternion * glm::vec3(0, 1, 0));
-    return Up;
-}

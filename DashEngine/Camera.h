@@ -14,6 +14,7 @@ namespace DashEngine {
         void SetActiveCamera();
         virtual void CalculateProjectionMatrice();
         virtual glm::mat4 GetProjectionMatrice();
+        virtual glm::vec3 ScreenToWorldPosition(glm::vec2 position);
         glm::mat4 GetViewMatrice();
     };
 }

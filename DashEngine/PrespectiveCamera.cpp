@@ -4,9 +4,7 @@
 using namespace DashEngine;
 void PrespectiveCamera::CalculateProjectionMatrice()
 {
-    int width, height;
-    glfwGetWindowSize(Engine::window, &width, &height);
-    ProjectionMat = glm::perspective(FovY, (float)width / height,NearPlane, FarPlane);
+    ProjectionMat = glm::perspective(FovY, (float)Engine::Instance->WindowWidth / Engine::Instance->WindowHeight,NearPlane, FarPlane);
 }
 
 glm::mat4 DashEngine::PrespectiveCamera::GetProjectionMatrice()

@@ -1,9 +1,15 @@
 #pragma once
 #include <vector>
-
+#include <glm/glm.hpp>
 namespace DashEngine {
     struct MeshData
     {
+    public:
+        struct Vertex {
+            glm::vec3 position;
+            glm::vec3 normal;
+            glm::vec2 texCoord;
+        };
     public:
         bool ThreeD = true;
         std::vector<float> Verticies;
