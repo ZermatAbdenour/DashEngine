@@ -5,10 +5,11 @@
 void Print::Update()
 {
     
+
 }
 
 void Print::Start()
 {
-
+    Inputs::Mouse::SetCursorMode(CursorMode::Normal);
     //entity->SetGlobalPosition(glm::vec3(0, 0, 0));
 }

@@ -27,5 +27,5 @@ myScene::myScene()
     //std::cout << "loadModel";
     ModelLoader::Model model = ModelLoader::LoadModel("Resources/Models/backpack/backpack.obj");
     AddEntitie(model.rootEntity);
-    model.rootEntity->Scale = glm::vec3(10, 2, 2);
+    model.rootEntity->Scale = glm::vec3(1, 1, 1);
 }

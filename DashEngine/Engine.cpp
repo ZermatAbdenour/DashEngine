@@ -1,5 +1,3 @@
-
-
 #include "Engine.h">
 #include <iostream>
 #include <glm/glm.hpp>
@@ -33,7 +31,7 @@ Engine::Engine() {
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	Window = glfwCreateWindow(STARTWINDOWWIDTH, STARTWINDOWHEIGHT,WINDOWTITLE,NULL,NULL);
-
+ 
 	if (Window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;

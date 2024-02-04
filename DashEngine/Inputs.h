@@ -3,6 +3,11 @@
 #include "Engine.h"
 
 namespace DashEngine {
+    enum CursorMode {
+        Normal = 0x00034001,  //GLFW_CURSOR_NORMAL
+        Hidden = 0x00034002,  //GLFW_CURSOR_HIDDEN
+        Disabled = 0x00034003 //GLFW_CURSOR_DISABLED
+    };
 
     enum class KeyCode
     {
@@ -163,6 +168,8 @@ namespace DashEngine {
         {
             static glm::vec2 position;
             static glm::vec2 delta;
+
+            static void SetCursorMode(CursorMode cursormode);
         };
     };
 }

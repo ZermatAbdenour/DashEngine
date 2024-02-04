@@ -9,12 +9,12 @@ void move::Start()
 {
 
 
-
 }
 
 
 void move::Update()
 {
+
     glm::vec3 movedir = glm::vec3(0);
     float speed = 2;
     if (Inputs::GetKey(KeyCode::W))
