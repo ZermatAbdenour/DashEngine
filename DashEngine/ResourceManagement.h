@@ -18,12 +18,10 @@ namespace DashEngine {
         struct Textures
         {
             static std::map<std::string, Texture*> textures;
-            static std::string UniqueName();
             //Textures
             static void AddTexture(std::string name, Texture* texture);
             static Texture* GetTexture(std::string name);
-        private:
-            static int LoadedTextures;
+            static bool TextureExist(std::string name);
         };
 
         struct Primitives

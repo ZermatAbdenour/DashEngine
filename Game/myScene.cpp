@@ -24,10 +24,8 @@ myScene::myScene()
     object->addComponent<MeshRenderer>();
     object->addComponent<Print>();
 
-    Entity* object1 = new Entity();
-    AddEntitie(object1);
     //std::cout << "loadModel";
-    ModelLoader::LoadModel("Resources/Models/backpack/backpack.obj", object1);
-
-    object1->Scale = glm::vec3(10, 2, 2);
+    ModelLoader::Model model = ModelLoader::LoadModel("Resources/Models/backpack/backpack.obj");
+    AddEntitie(model.rootEntity);
+    model.rootEntity->Scale = glm::vec3(10, 2, 2);
 }

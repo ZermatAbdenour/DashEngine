@@ -174,19 +174,20 @@ Shader* ResourceManagement::Shaders::GetShader(std::string name)
 }
 
 std::map<std::string, Texture*> ResourceManagement::Textures::textures = {};
-int ResourceManagement::Textures::LoadedTextures = 0;
-std::string DashEngine::ResourceManagement::Textures::UniqueName()
-{
-    return std::to_string(LoadedTextures++);
-}
 void ResourceManagement::Textures::AddTexture(std::string name, Texture* texture)
 {
-    ResourceManagement::Textures::textures[name] = texture;
+    if (!TextureExist(name))
+        ResourceManagement::Textures::textures[name] = texture;
 }
 
 Texture* ResourceManagement::Textures::GetTexture(std::string name)
 {
     return ResourceManagement::Textures::textures[name];
+}
+
+bool DashEngine::ResourceManagement::Textures::TextureExist(std::string name)
+{
+    return textures.find(name) != textures.end();
 }
 
 std::map<std::string, Mesh*> ResourceManagement::Primitives::primitives = {};

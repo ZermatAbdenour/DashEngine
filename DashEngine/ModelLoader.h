@@ -13,14 +13,15 @@ namespace DashEngine {
     {
     public:
         struct Model {
+        public:
+            Entity* rootEntity;
             const aiScene* scene;
             std::string directory;
-            std::vector<std::string> loadedTextures;
         };
-        static void LoadModel(std::string path,Entity* root);
+        static Model LoadModel(std::string path);
     private:
-        static void ProcessNode(aiNode* node,Entity* parent, Model* model);
-        static Mesh* ProcessMesh(aiMesh* mesh, Model* model);
-        static std::vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type,Texture::TextureTypes textureType,Model* model);
+        static void ProcessNode(aiNode* node,Entity* parent, Model model);
+        static Mesh* ProcessMesh(aiMesh* mesh, Model model);
+        static std::vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type,Texture::TextureTypes textureType,Model model);
     };
 }
