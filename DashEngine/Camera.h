@@ -8,7 +8,7 @@ namespace DashEngine {
     {
     public:
         float NearPlane = 0.1f;
-        float FarPlane = 100.0f;
+        float FarPlane = 30.0f;
         static Camera* ActiveCamera;
 
     public:

@@ -74,10 +74,15 @@ void main() {
     for(int i = 0; i < POINT_LIGHTS_COUNT; i++) {
         fragResult += CalculatePointLight(u_pointLights[i], normal, FragPos, viewDir, diffuseTexture, specularTexture);
     }
+    /*
     for(int i = 0; i < SPOT_LIGHTS_COUNT; i++) {
         fragResult += CalculateSpotLight(u_spotLights[i], normal, FragPos, viewDir, diffuseTexture, specularTexture);
     }
-    FragColor = vec4(fragResult * LinerizeDepth(gl_FragCoord.z), 1.0);
+    */
+    float depth = LinerizeDepth(gl_FragCoord.z) / u_farPlane;
+    vec3 depthVec4 = vec3(pow(depth, 1.4));
+
+    FragColor = vec4(fragResult * (1 - depthVec4) + depthVec4, 1.0);
 }
 
 vec3 CalculateDirectionalLight(DirectionalLight light, vec3 normal, vec3 viewDir, vec3 diffuseTexture, vec3 specularTexture) {

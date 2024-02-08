@@ -249,3 +249,6 @@ paket-files/
 *.sln.iml
 # Ignore DashEngine.sln
 DashEngine.sln
+
+#Ignore Some Models
+Game/Resources/Models/Sponza

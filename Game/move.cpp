@@ -5,12 +5,12 @@
 #include<DashEngine/Inputs.h>
 #include<DashEngine/Camera.h>
 
+bool m_disabled;
 void move::Start()
 {
 
-
+    m_disabled = false;
 }
-
 
 void move::Update()
 {
@@ -31,6 +31,18 @@ void move::Update()
     entity->EulerAngles.y += Inputs::Mouse::delta.x * 0.1;
     entity->EulerAngles.x += Inputs::Mouse::delta.y*0.1;
 
+    if (Inputs::GetKeyDown(KeyCode::Escape))
+    {
+        if (m_disabled) {
+            Inputs::Mouse::SetCursorMode(CursorMode::Normal);
+            m_disabled = false;
+        }
+        else
+        {
+            Inputs::Mouse::SetCursorMode(CursorMode::Disabled);
+            m_disabled = true;
+        }
+    }
 }
 
 
