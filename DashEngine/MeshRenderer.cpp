@@ -71,5 +71,9 @@ void DashEngine::MeshRenderer::Update()
     shader->setFloat("u_spotLights[0].cutOff", cos(glm::radians(15.0f)));
     shader->setFloat("u_spotLights[0].outerCutOff", cos(glm::radians(30.0f)));
 
+    //Camera
+    shader->setFloat("u_nearPlane", Camera::ActiveCamera->NearPlane);
+    shader->setFloat("u_farPlane", Camera::ActiveCamera->FarPlane);
+
     mesh->Draw(*shader);
 }

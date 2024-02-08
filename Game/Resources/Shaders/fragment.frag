@@ -52,10 +52,14 @@ uniform DirectionalLight u_directionalLight;
 uniform PointLight u_pointLights[POINT_LIGHTS_COUNT];
 uniform SpotLight u_spotLights[SPOT_LIGHTS_COUNT];
 
+//Camera
+uniform float u_nearPlane;
+uniform float u_farPlane;
+
 vec3 CalculateDirectionalLight(DirectionalLight light, vec3 normal, vec3 viewDir, vec3 diffuseTexture, vec3 specularTexture);
 vec3 CalculatePointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir, vec3 diffuseTexture, vec3 specularTexture);
 vec3 CalculateSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir, vec3 diffuseTexture, vec3 specularTexture);
-
+float LinerizeDepth(float depthValue);
 void main() {
     vec3 fragResult = vec3(0);
 
@@ -73,7 +77,7 @@ void main() {
     for(int i = 0; i < SPOT_LIGHTS_COUNT; i++) {
         fragResult += CalculateSpotLight(u_spotLights[i], normal, FragPos, viewDir, diffuseTexture, specularTexture);
     }
-    FragColor = vec4(fragResult, 1.0);
+    FragColor = vec4(fragResult * LinerizeDepth(gl_FragCoord.z), 1.0);
 }
 
 vec3 CalculateDirectionalLight(DirectionalLight light, vec3 normal, vec3 viewDir, vec3 diffuseTexture, vec3 specularTexture) {
@@ -131,4 +135,10 @@ vec3 CalculateSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir
     vec3 specular = specularTexture * spec * light.specular * intensity;
 
     return (ambient + diffuse + specular);
+}
+
+float LinerizeDepth(float depthValue) {
+    float ndc = depthValue * 2.0 - 1.0;
+    float linearDepth = (2.0 * u_nearPlane * u_farPlane) / (u_farPlane + u_nearPlane - ndc * (u_farPlane - u_nearPlane));
+    return linearDepth;
 }

@@ -7,6 +7,8 @@ namespace DashEngine {
     class Camera :public Component
     {
     public:
+        float NearPlane = 0.1f;
+        float FarPlane = 100.0f;
         static Camera* ActiveCamera;
 
     public:
