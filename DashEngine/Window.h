@@ -2,11 +2,11 @@
 namespace DashEditor {
     class Window {
     public:
-        Window(const char * name);
+        Window();
         bool IsVisible;
-        void Begin();
+        virtual void Begin();
         virtual void GUIUpdate();
-        void End();
+        virtual void End();
     private:
         const char* m_name;
     };

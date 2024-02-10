@@ -24,11 +24,11 @@ myScene::myScene()
     object->addComponent<MeshRenderer>();
     object->addComponent<Print>();
 
-    //std::cout << "loadModel";
-    ModelLoader::Model model = ModelLoader::LoadModel("Resources/Models/sponza/Sponza.obj");
-    AddEntitie(model.rootEntity);
-    model.rootEntity->Scale = glm::vec3(0.01, 0.01, 0.01);
 
+    //std::cout << "loadModel";
+    ModelLoader::Model* model = ModelLoader::LoadModel("Resources/Models/backpack/backpack.obj",true);
+    model->rootEntity->Scale = glm::vec3(1, 1, 1);
+    AddEntitie(model->rootEntity);
     /*ModelLoader::Model model2 = ModelLoader::LoadModel("Resources/Models/backpack/backpack.obj");
     AddEntitie(model2.rootEntity);
     model2.rootEntity->Scale = glm::vec3(0.3);

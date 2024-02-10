@@ -116,8 +116,10 @@ namespace DashEngine {
             scene->RenderScene();
 
             //DashEditor
+            // Set the next window position to anchor it to the left
 
             Hierarchy hierarchy = Hierarchy();
+            hierarchy.IsVisible = true;
             hierarchy.Begin();
             hierarchy.GUIUpdate();
             hierarchy.End();

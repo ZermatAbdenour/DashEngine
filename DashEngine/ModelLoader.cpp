@@ -4,7 +4,7 @@
 #include "Engine.h"
 
 namespace DashEngine {
-    ModelLoader::Model ModelLoader::LoadModel(std::string path)
+    ModelLoader::Model* ModelLoader::LoadModel(std::string path,bool cleanLoading)
     {
         Assimp::Importer importer;
         const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
@@ -12,41 +12,49 @@ namespace DashEngine {
         if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
         {
             std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() << std::endl;
-            return Model();
+            return new Model();
         }
 
         std::string directory = path.substr(0, path.find_last_of('/'));
         
-        Model model = Model();
-        model.directory = directory;
-        model.scene = scene;
+        Model* model = new Model();
+        model->directory = directory;
+        model->scene = scene;
+        model->CleanLoaded = cleanLoading;
 
-        Entity* rootEntity = new Entity();
-        model.rootEntity = rootEntity;
-        
-        ProcessNode(scene->mRootNode, rootEntity, model);
+
+        ProcessNode(scene->mRootNode, nullptr, model);
         return model;
     }
-    void ModelLoader::ProcessNode(aiNode* node, Entity* parent, Model model) {
+    void ModelLoader::ProcessNode(aiNode* node, Entity* parent, Model* model) {
         //Create the root entity
-        Entity* newEntity = new Entity();
+        Entity* newEntity = new Entity(node->mName.C_Str());
         for (int i = 0;i < node->mNumMeshes;i++) {
             MeshRenderer* renderer = newEntity->addComponent<MeshRenderer>();
-            aiMesh* mesh = model.scene->mMeshes[node->mMeshes[i]];
+            aiMesh* mesh = model->scene->mMeshes[node->mMeshes[i]];
             renderer->mesh = ProcessMesh(mesh, model);
         }
+        if (parent == nullptr) {
+            //Remove the file extension from the name 
+            size_t dotPosition = newEntity->Name.find_last_of('.');
+            if (dotPosition != std::string::npos && dotPosition > 0) {
+                newEntity->Name = newEntity->Name.substr(0, dotPosition);
+            }
+            model->rootEntity = newEntity;
+        }
+        else
+            parent->addChild(newEntity);
         
-        parent->addChild(newEntity);
-
-        
-        //process Child Nodes
+        //process Child 
         for (unsigned int i = 0; i < node->mNumChildren; i++)
         {
+            if (model->CleanLoaded && node->mChildren[i]->mNumChildren == 0 && node->mChildren[i]->mNumMeshes == 0)
+                continue;
             ProcessNode(node->mChildren[i],newEntity,model);
         }
     }
 
-    Mesh* ModelLoader::ProcessMesh(aiMesh* mesh,Model model)
+    Mesh* ModelLoader::ProcessMesh(aiMesh* mesh,Model* model)
     {
         std::vector<Mesh::Vertex> vertices;
         std::vector<unsigned int> indices;
@@ -86,7 +94,7 @@ namespace DashEngine {
         //process Textures
         if (mesh->mMaterialIndex >= 0)
         {
-            aiMaterial* material = model.scene->mMaterials[mesh->mMaterialIndex];
+            aiMaterial* material = model->scene->mMaterials[mesh->mMaterialIndex];
             std::vector<Texture*> diffuseMaps = loadMaterialTextures(material,
                 aiTextureType_DIFFUSE, Texture::TextureTypes::Diffuse, model);
             //std::cout << diffuseMaps.size()<<std::endl;
@@ -98,7 +106,7 @@ namespace DashEngine {
 
         return new Mesh(vertices, indices, textures);
     }
-    std::vector<Texture*> ModelLoader::loadMaterialTextures(aiMaterial* mat, aiTextureType type, Texture::TextureTypes textureType,Model model)
+    std::vector<Texture*> ModelLoader::loadMaterialTextures(aiMaterial* mat, aiTextureType type, Texture::TextureTypes textureType,Model* model)
     {
         std::vector<Texture*> textures;
         for (unsigned int i = 0; i < mat->GetTextureCount(type); i++)
@@ -107,7 +115,7 @@ namespace DashEngine {
             mat->GetTexture(type, i, &str);
 
             if (!ResourceManagement::Textures::TextureExist(str.C_Str())) {
-                std::string fullPath = model.directory + "/" + str.C_Str();
+                std::string fullPath = model->directory + "/" + str.C_Str();
                 std::cout << fullPath << std::endl;
                 Texture* texture = new Texture(fullPath.c_str(), textureType);
                 ResourceManagement::Textures::AddTexture(str.C_Str(),texture);

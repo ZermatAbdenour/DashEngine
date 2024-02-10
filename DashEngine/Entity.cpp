@@ -10,16 +10,26 @@ int Entity::_nextEntityID = 1;
 
 Entity::Entity()
 {
-	_entityID = _nextEntityID;
-	_nextEntityID++;
+    Name = "Entity";
+    InitEntity();
+}
+Entity::Entity(std::string name) {
+    Name = name;
+    InitEntity();
+}
+
+void Entity::InitEntity()
+{
+    entityID = _nextEntityID;
+    _nextEntityID++;
 
     //Reset Transform
     LocalPosition = glm::vec3(0.0f);
     EulerAngles = glm::vec3(0.0f);
     Scale = glm::vec3(1.0f);
 
-	Parent = nullptr;
-	Root = nullptr;
+    Parent = nullptr;
+    Root = nullptr;
 }
 
 void Entity::addChild(Entity* child)
@@ -61,6 +71,7 @@ void Entity::processEntity()
 
     LatestProcessTime = (glfwGetTime() - processStartTime)*1000;//in milliseconds
 }
+
 
 glm::mat4 Entity::GetModel()
 {

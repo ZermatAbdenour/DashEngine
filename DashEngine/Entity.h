@@ -16,6 +16,9 @@ namespace DashEngine {
 	class Entity
 	{
 	public:
+        //Identifiers
+        std::string Name;
+        int entityID;
         //Transform
         glm::vec3 LocalPosition;
         glm::vec3 EulerAngles;
@@ -33,11 +36,13 @@ namespace DashEngine {
 		std::vector<Component*> Components;
         float LatestProcessTime;
 	private:
-		int _entityID;
+
 		static int _nextEntityID;
 
 	public:
 		Entity();
+        Entity(std::string name);
+
 		void addChild(Entity* child);
 		void removeChild(Entity* child);
 
@@ -57,6 +62,9 @@ namespace DashEngine {
         T* getComponent() const;
         template <typename T>
         void removeComponent();
+
+    private:
+        void InitEntity();
 	};
 
 
