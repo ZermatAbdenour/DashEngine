@@ -146,6 +146,7 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Hierarchy.cpp" />
+    <ClCompile Include="ToolBar.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="Window.h" />
     <ClCompile Include="Inputs.cpp" />
@@ -189,6 +190,7 @@
     <ClInclude Include="SpotLight.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="TimeUtils.h" />
+    <ClInclude Include="ToolBar.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Game\Resources\Shaders\fragment.frag" />

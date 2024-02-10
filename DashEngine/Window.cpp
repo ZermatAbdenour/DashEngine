@@ -5,22 +5,9 @@ namespace DashEditor {
     {
 
     }
-    void Window::Begin()
-    {
-        if (IsVisible) {
-
-            ImGui::Begin(m_name, &IsVisible);
-        }
-
-    }
-    void Window::GUIUpdate()
+    void Window::ShowWindow()
     {
     }
-    void Window::End()
-    {
-        if(IsVisible)
-            ImGui::End();
 
-    }
 }
 

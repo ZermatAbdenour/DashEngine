@@ -11,6 +11,7 @@
 #include <backends/imgui_impl_glfw.h>
 #include <backends/imgui_impl_opengl3.h>
 #include "Hierarchy.h"
+#include "ToolBar.h"
 
 namespace DashEngine {
     using namespace DashEditor;
@@ -119,10 +120,9 @@ namespace DashEngine {
             // Set the next window position to anchor it to the left
 
             Hierarchy hierarchy = Hierarchy();
-            hierarchy.IsVisible = true;
-            hierarchy.Begin();
-            hierarchy.GUIUpdate();
-            hierarchy.End();
+            hierarchy.ShowWindow();
+            ToolBar toolBar = ToolBar();
+            toolBar.ShowWindow();
 
             //RenderImGui
             ImGui::Render();

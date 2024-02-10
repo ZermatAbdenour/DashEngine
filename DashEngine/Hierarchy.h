@@ -7,8 +7,7 @@ namespace DashEditor {
     class Hierarchy :public Window{
     public:
         Hierarchy();
-        void Begin() override;
-        void GUIUpdate() override;
+        void ShowWindow()override;
         void DisplayEntity(Entity* e);
     };
 }

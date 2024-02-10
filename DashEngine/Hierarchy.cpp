@@ -5,26 +5,26 @@ namespace DashEditor{
     using namespace DashEngine;
     Hierarchy::Hierarchy() {
     }
-    void Hierarchy::Begin() {
-        if (IsVisible) {
-            // Get the screen size
-            ImVec2 screenSize = ImGui::GetIO().DisplaySize;
+    void Hierarchy::ShowWindow()
+    {
 
-            ImGui::SetNextWindowPos(ImVec2(0, 0), ImGuiCond_Always);
-            ImGui::SetNextWindowSizeConstraints(ImVec2(screenSize.x/5, screenSize.y), ImVec2(screenSize.x / 4, screenSize.y));
+        if (!IsVisible)
+            return;
+        // Get the screen size
+        ImVec2 screenSize = ImGui::GetIO().DisplaySize;
+        ImGui::SetNextWindowPos(ImVec2(0, 32), ImGuiCond_Always);
+        ImGui::SetNextWindowSizeConstraints(ImVec2(screenSize.x / 5, screenSize.y), ImVec2(screenSize.x / 4, screenSize.y));
+        ImGuiWindowFlags flags = ImGuiWindowFlags_::ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_::ImGuiWindowFlags_NoCollapse;
+        
+        ImGui::Begin("Hierarchy", &IsVisible, flags);
+  
+        //Show Hierarchy
+        for (int i = 0;i < Engine::Instance->ActiveScene->RootEntities.size();i++)
+            DisplayEntity(Engine::Instance->ActiveScene->RootEntities[i]);
 
-            ImGuiWindowFlags flags = ImGuiWindowFlags_::ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_::ImGuiWindowFlags_NoCollapse ;
-            ImGui::Begin("Hierarchy", &IsVisible, flags);
-        }
+        ImGui::End();
     }
 
-    void Hierarchy::GUIUpdate()
-    {   
-
-        if (IsVisible);
-            for(int i=0;i<Engine::Instance->ActiveScene->RootEntities.size();i++)
-                DisplayEntity(Engine::Instance->ActiveScene->RootEntities[i]);
-    }
 
     void Hierarchy::DisplayEntity(Entity *e) {
         ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags();
