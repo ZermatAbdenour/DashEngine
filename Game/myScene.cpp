@@ -25,7 +25,13 @@ myScene::myScene()
     object->addComponent<Print>();
 
     //std::cout << "loadModel";
-    ModelLoader::Model model = ModelLoader::LoadModel("Resources/Models/Sponza/sponza.obj");
+    ModelLoader::Model model = ModelLoader::LoadModel("Resources/Models/sponza/Sponza.obj");
     AddEntitie(model.rootEntity);
     model.rootEntity->Scale = glm::vec3(0.01, 0.01, 0.01);
+
+    /*ModelLoader::Model model2 = ModelLoader::LoadModel("Resources/Models/backpack/backpack.obj");
+    AddEntitie(model2.rootEntity);
+    model2.rootEntity->Scale = glm::vec3(0.3);
+    model2.rootEntity->LocalPosition = glm::vec3(0, 0.5, 0);*/
+
 }

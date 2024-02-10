@@ -50,7 +50,7 @@ namespace DashEngine {
     {
         std::vector<Mesh::Vertex> vertices;
         std::vector<unsigned int> indices;
-        std::vector<Texture> textures;
+        std::vector<Texture*> textures;
 
         for (unsigned int i = 0; i < mesh->mNumVertices; i++)
         {
@@ -83,23 +83,24 @@ namespace DashEngine {
                 indices.push_back(face.mIndices[j]);
         }
 
-        
+        //process Textures
         if (mesh->mMaterialIndex >= 0)
         {
             aiMaterial* material = model.scene->mMaterials[mesh->mMaterialIndex];
-            std::vector<Texture> diffuseMaps = loadMaterialTextures(material,
+            std::vector<Texture*> diffuseMaps = loadMaterialTextures(material,
                 aiTextureType_DIFFUSE, Texture::TextureTypes::Diffuse, model);
+            //std::cout << diffuseMaps.size()<<std::endl;
             textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
-            std::vector<Texture> specularMaps = loadMaterialTextures(material,
+            std::vector<Texture*> specularMaps = loadMaterialTextures(material,
                 aiTextureType_SPECULAR, Texture::TextureTypes::Specular,model);
             textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
         }
 
         return new Mesh(vertices, indices, textures);
     }
-    std::vector<Texture> ModelLoader::loadMaterialTextures(aiMaterial* mat, aiTextureType type, Texture::TextureTypes textureType,Model model)
+    std::vector<Texture*> ModelLoader::loadMaterialTextures(aiMaterial* mat, aiTextureType type, Texture::TextureTypes textureType,Model model)
     {
-        std::vector<Texture> textures;
+        std::vector<Texture*> textures;
         for (unsigned int i = 0; i < mat->GetTextureCount(type); i++)
         {
             aiString str;
@@ -107,13 +108,16 @@ namespace DashEngine {
 
             if (!ResourceManagement::Textures::TextureExist(str.C_Str())) {
                 std::string fullPath = model.directory + "/" + str.C_Str();
-                //std::cout << std::endl << fullPath;
-                Texture texture = Texture(fullPath.c_str(), textureType);
-                ResourceManagement::Textures::AddTexture(str.C_Str(),&texture );
+                std::cout << fullPath << std::endl;
+                Texture* texture = new Texture(fullPath.c_str(), textureType);
+                ResourceManagement::Textures::AddTexture(str.C_Str(),texture);
+                textures.push_back(texture);
+            }
+            else {
+                Texture* texture = ResourceManagement::Textures::GetTexture(str.C_Str());
                 textures.push_back(texture);
             }
         }
-
         return textures;
     }
 }

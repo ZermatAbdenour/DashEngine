@@ -26,9 +26,9 @@ namespace DashEngine {
         unsigned int VBO, EBO, VAO;
         std::vector<Vertex> Vertices;
         std::vector<unsigned int> Indices;
-        std::vector<Texture> Textures;
+        std::vector<Texture*> Textures;
     public:
-        Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures);
+        Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture*> textures);
         void Load();
         void Draw(Shader& shader);
     };

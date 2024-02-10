@@ -215,9 +215,9 @@ void ResourceManagement::LoadResources()
     //ResourceManagement::Textures::AddTexture("Circle", new Texture("Resources/Sprites/PingPong/awesomeface.png"));
     //primitives
 
-    std::vector<Texture> textures;
-    textures.push_back(*ResourceManagement::Textures::GetTexture("Diffuse"));
-    textures.push_back(*ResourceManagement::Textures::GetTexture("Specular"));
+    std::vector<Texture*> textures;
+    textures.push_back(ResourceManagement::Textures::GetTexture("Diffuse"));
+    textures.push_back(ResourceManagement::Textures::GetTexture("Specular"));
     ResourceManagement::Primitives::AddPrimitive("Cube", new Mesh(cubevertices, cubeindices, textures));
     //ResourceManagement::Primitives::AddPrimitive("Quad", new Mesh(quadvertices, quadindices, quaduvs));
 }

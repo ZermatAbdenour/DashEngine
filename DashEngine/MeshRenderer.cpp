@@ -21,6 +21,8 @@ void DashEngine::MeshRenderer::Start()
 
 void DashEngine::MeshRenderer::Update()
 {
+    glCullFace(GL_BACK);
+
     shader->use();
 
     shader->setMatrix4fv("model", entity->Model);
@@ -37,6 +39,7 @@ void DashEngine::MeshRenderer::Update()
 
     //setup directional light
     shader->setVec3("u_directionalLight.direction", glm::vec3(0, 0, 1));
+
     shader->setVec3("u_directionalLight.ambient", glm::vec3(0.3f,0.3f,0.3f));
     shader->setVec3("u_directionalLight.diffuse", glm::vec3(1, 1, 1));
     shader->setVec3("u_directionalLight.specular", glm::vec3(1, 1, 1));

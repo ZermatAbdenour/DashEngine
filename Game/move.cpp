@@ -8,8 +8,8 @@
 bool m_disabled;
 void move::Start()
 {
-
     m_disabled = false;
+
 }
 
 void move::Update()

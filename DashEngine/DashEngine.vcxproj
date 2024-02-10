@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Zlib\include;$(SolutionDir)Dependencies\Assimp\include;$(SolutionDir)Dependencies\Glad\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(SolutionDir)Dependencies\GLM</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Dependencies\Imgui;$(SolutionDir)Dependencies\Zlib\include;$(SolutionDir)Dependencies\Assimp\include;$(SolutionDir)Dependencies\Glad\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(SolutionDir)Dependencies\GLM</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -91,7 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Zlib\include;$(SolutionDir)Dependencies\Assimp\include;$(SolutionDir)Dependencies\Glad\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(SolutionDir)Dependencies\GLM</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Dependencies\Imgui;$(SolutionDir)Dependencies\Zlib\include;$(SolutionDir)Dependencies\Assimp\include;$(SolutionDir)Dependencies\Glad\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(SolutionDir)Dependencies\GLM</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -106,7 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Zlib\include;$(SolutionDir)Dependencies\Assimp\include;$(SolutionDir)Dependencies\Glad\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(SolutionDir)Dependencies\GLM</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Dependencies\Imgui;$(SolutionDir)Dependencies\Zlib\include;$(SolutionDir)Dependencies\Assimp\include;$(SolutionDir)Dependencies\Glad\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(SolutionDir)Dependencies\GLM</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -121,7 +121,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Zlib\include;$(SolutionDir)Dependencies\Assimp\include;$(SolutionDir)Dependencies\Glad\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(SolutionDir)Dependencies\GLM</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Dependencies\Imgui;$(SolutionDir)Dependencies\Zlib\include;$(SolutionDir)Dependencies\Assimp\include;$(SolutionDir)Dependencies\Glad\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(SolutionDir)Dependencies\GLM</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -132,11 +132,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Dependencies\Glad\glad.c" />
+    <ClCompile Include="..\Dependencies\Imgui\backends\imgui_impl_glfw.cpp" />
+    <ClCompile Include="..\Dependencies\Imgui\backends\imgui_impl_opengl2.cpp" />
+    <ClCompile Include="..\Dependencies\Imgui\backends\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="..\Dependencies\Imgui\imgui.cpp" />
+    <ClCompile Include="..\Dependencies\Imgui\imgui_demo.cpp" />
+    <ClCompile Include="..\Dependencies\Imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\Dependencies\Imgui\imgui_tables.cpp" />
+    <ClCompile Include="..\Dependencies\Imgui\imgui_widgets.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="DirectionalLight.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Hierarchy.cpp" />
+    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="Window.h" />
     <ClCompile Include="Inputs.cpp" />
     <ClCompile Include="LightsManager.cpp" />
     <ClCompile Include="Mesh.cpp" />
@@ -161,6 +172,7 @@
     <ClInclude Include="DirectionalLight.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="Hierarchy.h" />
     <ClInclude Include="Inputs.h" />
     <ClInclude Include="LightsManager.h" />
     <ClInclude Include="Mesh.h" />

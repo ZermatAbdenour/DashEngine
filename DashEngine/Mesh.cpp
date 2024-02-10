@@ -2,7 +2,7 @@
 #include <string>
 
 namespace DashEngine {
-    Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures)
+    Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture*> textures)
     {
         Vertices = vertices;
         Indices = indices;
@@ -52,12 +52,12 @@ namespace DashEngine {
         for (int i = 0;i < Textures.size();i++) {
             std::string name;
             std::string nbr;
-            Textures[i].ActivateAndBind(i);
-            if (Textures[i].TextureType == Texture::TextureTypes::Diffuse) {
+            Textures[i]->ActivateAndBind(i);
+            if (Textures[i]->TextureType == Texture::TextureTypes::Diffuse) {
                 name = "diffuseMap";
                 nbr = diffuseNbr++;
             }
-            else if (Textures[i].TextureType == Texture::TextureTypes::Specular) {
+            else if (Textures[i]->TextureType == Texture::TextureTypes::Specular) {
                 name = "SpecularMap";
                 nbr = specularNbr++;
             }
@@ -78,5 +78,6 @@ namespace DashEngine {
         glDrawElements(GL_TRIANGLES, Indices.size(), GL_UNSIGNED_INT, 0);
         
         glBindVertexArray(0);
+        glBindTexture(GL_TEXTURE_2D, 0);
     }
 }

@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Zlib\include;$(SolutionDir)Dependencies\Assimp\include;$(SolutionDir);$(SolutionDir)Dependencies\Glad\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(SolutionDir)Dependencies\GLM</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Dependencies\Imgui;$(SolutionDir)Dependencies\Assimp\include;$(SolutionDir);$(SolutionDir)Dependencies\Glad\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(SolutionDir)Dependencies\GLM</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -93,7 +93,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Zlib\include;$(SolutionDir)Dependencies\Assimp\include;$(SolutionDir);$(SolutionDir)Dependencies\Glad\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(SolutionDir)Dependencies\GLM</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Dependencies\Imgui;$(SolutionDir)Dependencies\Assimp\include;$(SolutionDir);$(SolutionDir)Dependencies\Glad\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(SolutionDir)Dependencies\GLM</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -110,7 +110,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Zlib\include;$(SolutionDir)Dependencies\Assimp\include;$(SolutionDir);$(SolutionDir)Dependencies\Glad\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(SolutionDir)Dependencies\GLM</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Dependencies\Imgui;$(SolutionDir)Dependencies\Assimp\include;$(SolutionDir);$(SolutionDir)Dependencies\Glad\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(SolutionDir)Dependencies\GLM</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,7 +127,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Zlib\include;$(SolutionDir)Dependencies\Assimp\include;$(SolutionDir);$(SolutionDir)Dependencies\Glad\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(SolutionDir)Dependencies\GLM</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Dependencies\Imgui;$(SolutionDir)Dependencies\Assimp\include;$(SolutionDir);$(SolutionDir)Dependencies\Glad\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(SolutionDir)Dependencies\GLM</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

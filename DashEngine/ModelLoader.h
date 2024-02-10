@@ -22,6 +22,6 @@ namespace DashEngine {
     private:
         static void ProcessNode(aiNode* node,Entity* parent, Model model);
         static Mesh* ProcessMesh(aiMesh* mesh, Model model);
-        static std::vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type,Texture::TextureTypes textureType,Model model);
+        static std::vector<Texture*> loadMaterialTextures(aiMaterial* mat, aiTextureType type,Texture::TextureTypes textureType,Model model);
     };
 }

@@ -5,8 +5,8 @@ using namespace DashEngine;
 class Print:public Component
 {
 public:
-    void Update() override;
-    void Start() override;
+    void Update();
+    void Start();
 
 private:
 
