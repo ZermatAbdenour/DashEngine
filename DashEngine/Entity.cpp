@@ -17,6 +17,20 @@ Entity::Entity(std::string name) {
     Name = name;
     InitEntity();
 }
+Entity::~Entity() {
+
+}
+
+void Entity::Delete()
+{
+    if (Parent == nullptr) {
+        scene->RemoveRootEntity(this);
+    }
+    else {
+        Parent->removeChild(this);
+    }
+        
+}
 
 void Entity::InitEntity()
 {
@@ -49,7 +63,13 @@ void Entity::addChild(Entity* child)
 
 void Entity::removeChild(Entity* child)
 {
-
+    for (int i = 0;i < child->Childs.size();i++) {
+        removeChild(child->Childs[i]);
+    }
+    auto it = std::find(Childs.begin(), Childs.end(), child);
+    delete child;
+    if (it != Childs.end())
+        Childs.erase(it);
 }
 
 void Entity::processEntity()

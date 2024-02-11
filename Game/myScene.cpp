@@ -8,7 +8,7 @@
 #include<DashEngine/ModelLoader.h>
 myScene::myScene()
 {
-    Entity* camera = new Entity();
+    Entity* camera = new Entity("Camera");
     AddEntitie(camera);
     camera->addComponent<PrespectiveCamera>();
 
@@ -33,5 +33,4 @@ myScene::myScene()
     AddEntitie(model2.rootEntity);
     model2.rootEntity->Scale = glm::vec3(0.3);
     model2.rootEntity->LocalPosition = glm::vec3(0, 0.5, 0);*/
-
 }

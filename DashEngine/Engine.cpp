@@ -99,6 +99,8 @@ namespace DashEngine {
 
     void Engine::Load(Scene* scene) {
         ActiveScene = scene;
+
+        Hierarchy hierarchy = Hierarchy();
         while (isRunning())
         {
             TimeUtils::deltaTime = glfwGetTime() - TimeUtils::time;
@@ -119,7 +121,7 @@ namespace DashEngine {
             //DashEditor
             // Set the next window position to anchor it to the left
 
-            Hierarchy hierarchy = Hierarchy();
+
             hierarchy.ShowWindow();
             ToolBar toolBar = ToolBar();
             toolBar.ShowWindow();

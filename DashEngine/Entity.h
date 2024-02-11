@@ -10,15 +10,17 @@
 
 #include "Component.h"
 #include <glm/glm.hpp>
+#include "Scene.h"
 
 namespace DashEngine {
-	
+    class Scene; //Forward Declaration of the class Entity
 	class Entity
 	{
 	public:
         //Identifiers
         std::string Name;
         int entityID;
+        Scene* scene;
         //Transform
         glm::vec3 LocalPosition;
         glm::vec3 EulerAngles;
@@ -42,10 +44,10 @@ namespace DashEngine {
 	public:
 		Entity();
         Entity(std::string name);
-
+        ~Entity();
+        void Delete();
 		void addChild(Entity* child);
 		void removeChild(Entity* child);
-
         //Entity transform
         void SetGlobalPosition(glm::vec3 position);
         glm::vec3 GetGlobalPosition();

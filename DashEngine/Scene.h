@@ -3,6 +3,7 @@
 #include "Entity.h"
 #include "LightsManager.h"
 namespace DashEngine {
+    class Entity;
 	class Scene
 	{
 	public:
@@ -13,6 +14,6 @@ namespace DashEngine {
 	public:
 		void RenderScene();
 		void AddEntitie(Entity* entity);
-		void RemoveEntitie();
+		void RemoveRootEntity(Entity* entity);
 	};
 }
