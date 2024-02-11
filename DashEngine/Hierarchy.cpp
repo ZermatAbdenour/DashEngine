@@ -1,7 +1,7 @@
 #include "Hierarchy.h"
 
 
-namespace DashEditor{
+namespace DashEditor {
     using namespace DashEngine;
     Hierarchy::Hierarchy() {
     }
@@ -15,9 +15,15 @@ namespace DashEditor{
         ImGui::SetNextWindowPos(ImVec2(0, 32), ImGuiCond_Always);
         ImGui::SetNextWindowSizeConstraints(ImVec2(screenSize.x / 5, screenSize.y), ImVec2(screenSize.x / 4, screenSize.y));
         ImGuiWindowFlags flags = ImGuiWindowFlags_::ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_::ImGuiWindowFlags_NoCollapse;
-        
+
         ImGui::Begin("Hierarchy", &IsVisible, flags);
-  
+
+        ImGui::BeginChild("child", ImVec2(ImGui::GetWindowContentRegionMax().x, 30));
+        ImGui::Button("+");
+        ImGui::SameLine();
+        ImGui::Button("-");
+        ImGui::Separator();
+        ImGui::EndChild();
         //Show Hierarchy
         for (int i = 0;i < Engine::Instance->ActiveScene->RootEntities.size();i++)
             DisplayEntity(Engine::Instance->ActiveScene->RootEntities[i]);
@@ -26,7 +32,7 @@ namespace DashEditor{
     }
 
 
-    void Hierarchy::DisplayEntity(Entity *e) {
+    void Hierarchy::DisplayEntity(Entity* e) {
         ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags();
         if (e->Childs.size() == 0)
             flags |= ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_Leaf;
