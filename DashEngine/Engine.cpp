@@ -12,6 +12,7 @@
 #include <backends/imgui_impl_opengl3.h>
 #include "Hierarchy.h"
 #include "ToolBar.h"
+#include "Inspector.h"
 
 namespace DashEngine {
     using namespace DashEditor;
@@ -101,6 +102,8 @@ namespace DashEngine {
         ActiveScene = scene;
 
         Hierarchy hierarchy = Hierarchy();
+        Inspector inspector = Inspector();
+        ToolBar toolBar = ToolBar();
         while (isRunning())
         {
             TimeUtils::deltaTime = glfwGetTime() - TimeUtils::time;
@@ -123,8 +126,9 @@ namespace DashEngine {
 
 
             hierarchy.ShowWindow();
-            ToolBar toolBar = ToolBar();
             toolBar.ShowWindow();
+            inspector.ShowWindow();
+
 
             //RenderImGui
             ImGui::Render();

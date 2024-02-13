@@ -37,6 +37,12 @@
     <Filter Include="Header Files\Editor">
       <UniqueIdentifier>{daf53691-2359-4064-8c2b-645bf1cf9bea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Editor\ComponentsEditor">
+      <UniqueIdentifier>{0ba247c4-3f65-4830-804a-368ddb2fa9f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Editor\ComponentsEditor">
+      <UniqueIdentifier>{8ec39761-d311-4eca-8eae-fa95b71df8fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -141,6 +147,15 @@
     <ClCompile Include="ToolBar.cpp">
       <Filter>Source Files\Editor</Filter>
     </ClCompile>
+    <ClCompile Include="Inspector.cpp">
+      <Filter>Source Files\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentEditor.cpp">
+      <Filter>Source Files\Editor\ComponentsEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshRendererEditor.cpp">
+      <Filter>Source Files\Editor\ComponentsEditor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -214,6 +229,15 @@
     </ClInclude>
     <ClInclude Include="ToolBar.h">
       <Filter>Header Files\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="Inspector.h">
+      <Filter>Header Files\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentEditor.h">
+      <Filter>Header Files\Editor\ComponentsEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshRendererEditor.h">
+      <Filter>Header Files\Editor\ComponentsEditor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

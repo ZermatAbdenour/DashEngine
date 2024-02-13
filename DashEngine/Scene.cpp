@@ -20,8 +20,8 @@ namespace DashEngine {
             entity->removeChild(entity->Childs[i]);
         }
         auto it = std::find(RootEntities.begin(), RootEntities.end(), entity);
-        delete entity;
         if(it != RootEntities.end())
             RootEntities.erase(it);
+        delete entity;
     }
 }

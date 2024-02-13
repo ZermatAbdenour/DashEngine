@@ -142,10 +142,13 @@
     <ClCompile Include="..\Dependencies\Imgui\imgui_widgets.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="ComponentEditor.cpp" />
     <ClCompile Include="DirectionalLight.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Hierarchy.cpp" />
+    <ClCompile Include="Inspector.cpp" />
+    <ClCompile Include="MeshRendererEditor.cpp" />
     <ClCompile Include="ToolBar.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="Window.h" />
@@ -169,16 +172,19 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="ComponentEditor.h" />
     <ClInclude Include="DashEngineConfig.h" />
     <ClInclude Include="DirectionalLight.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Hierarchy.h" />
     <ClInclude Include="Inputs.h" />
+    <ClInclude Include="Inspector.h" />
     <ClInclude Include="LightsManager.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshData.h" />
     <ClInclude Include="MeshRenderer.h" />
+    <ClInclude Include="MeshRendererEditor.h" />
     <ClInclude Include="ModelLoader.h" />
     <ClInclude Include="OrthographicCamera.h" />
     <ClInclude Include="PointLight.h" />

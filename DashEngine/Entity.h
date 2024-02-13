@@ -46,6 +46,7 @@ namespace DashEngine {
         Entity(std::string name);
         ~Entity();
         void Delete();
+        void setParent(Entity* parent);
 		void addChild(Entity* child);
 		void removeChild(Entity* child);
         //Entity transform

@@ -4,6 +4,7 @@
 
 namespace DashEditor {
     using namespace DashEngine;
+    std::vector<Entity*> Hierarchy::SelectedEntitys;
     Hierarchy::Hierarchy() {
     }
     void Hierarchy::ShowWindow()
@@ -16,27 +17,48 @@ namespace DashEditor {
         ImVec2 screenSize = ImGui::GetIO().DisplaySize;
         ImGui::SetNextWindowPos(ImVec2(0, 32), ImGuiCond_Always);
         ImGui::SetNextWindowSizeConstraints(ImVec2(screenSize.x / 5, screenSize.y -32), ImVec2(screenSize.x / 4, screenSize.y -32));
-        ImGuiWindowFlags flags = ImGuiWindowFlags_::ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_::ImGuiWindowFlags_NoCollapse;
+        ImGuiWindowFlags flags = ImGuiWindowFlags_::ImGuiWindowFlags_NoMove  | ImGuiWindowFlags_::ImGuiWindowFlags_NoCollapse;
 
 
         ImGui::Begin("Hierarchy", &IsVisible, flags);
-        ImGui::Button("+");
+
+        //add empty entity
+        if (ImGui::Button("+")) {
+            Entity* newEntity = new Entity();
+            if (SelectedEntitys.size() == 1) {
+                SelectedEntitys[0]->addChild(newEntity);
+            }
+            else {
+                Engine::Instance->ActiveScene->AddEntitie(newEntity);
+            }
+        }
+
         ImGui::SameLine();
 
-        if (ImGui::Button("-")&& SelectedEntitys.size()>0) {
-            for (int i = 0;i < SelectedEntitys.size();i--) {
-                if(SelectedEntitys[i]!= nullptr)
+        //delete selected Entityes
+        if (ImGui::Button("-")) {
+            m_clear = true;
+ 
+            /*for (int i = SelectedEntitys.size()-1;i>= 0;i--) {
+                std::cout << i << std::endl;
+                if(SelectedEntitys[i]!= NULL)
                     SelectedEntitys[i]->Delete();
             }
-            SelectedEntitys.clear();
-            m_shiftFistSelected = -1;
-            m_shiftLastSelected = -1;
+            SelectedEntitys.clear();*/
         }
         ImGui::Separator();
-        ImGui::BeginChild("child", ImVec2(ImGui::GetWindowContentRegionMax().x, ImGui::GetWindowContentRegionMax().y - 36));
+        ImGui::BeginChild("child", ImVec2(ImGui::GetWindowContentRegionMax().x, ImGui::GetWindowContentRegionMax().y - 60));
         //Show Hierarchy
         for (int i = 0;i < Engine::Instance->ActiveScene->RootEntities.size();i++)
             DisplayEntity(Engine::Instance->ActiveScene->RootEntities[i],m_entityDisplayIndex++);
+        //std::cout << Engine::Instance->ActiveScene->RootEntities[2]->Childs.size() <<std::endl;
+        
+        if (m_clear) {
+            m_shiftFistSelected = -1;
+            m_shiftLastSelected = -1;
+            SelectedEntitys.clear();
+            m_clear = false;
+        }
 
         ImGui::EndChild();
         ImGui::End();
@@ -70,11 +92,18 @@ namespace DashEditor {
             }
 
         }
+
         //Check if the items in between the fist and the last
         if (displayIndex >= fmin(m_shiftFistSelected, m_shiftLastSelected) && displayIndex <= fmax(m_shiftFistSelected, m_shiftLastSelected)) {
-            auto it = std::find(SelectedEntitys.begin(), SelectedEntitys.end(), e);
-            if (it == SelectedEntitys.end()) {
+            auto itentity = std::find(SelectedEntitys.begin(), SelectedEntitys.end(), e);
+
+            if (itentity == SelectedEntitys.end()) {
                 SelectedEntitys.push_back(e);
+            }
+            else {
+                if (m_clear) {
+                    e->Delete();
+                }
             }
         }
         

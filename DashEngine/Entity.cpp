@@ -32,6 +32,8 @@ void Entity::Delete()
         
 }
 
+
+
 void Entity::InitEntity()
 {
     entityID = _nextEntityID;
@@ -46,19 +48,24 @@ void Entity::InitEntity()
     Root = nullptr;
 }
 
+void Entity::setParent(Entity* parent)
+{
+    //Set the Child parent into this 
+    Parent = parent;
+
+    //Add the Root of the child
+    if (parent->Parent == nullptr)
+        this->Root = parent;
+    else
+        this->Root = parent->Root;
+}
+
 void Entity::addChild(Entity* child)
 {
 	//add the child into the childs vector
 	Childs.push_back(child);
 
-	//Set the Child parent into this 
-	child->Parent = this;
-
-	//Add the Root of the child
-	if (this->Parent == nullptr)
-		child->Root = this;
-	else
-		child->Root = this->Root;
+    child->setParent(this);
 }
 
 void Entity::removeChild(Entity* child)
@@ -67,9 +74,10 @@ void Entity::removeChild(Entity* child)
         removeChild(child->Childs[i]);
     }
     auto it = std::find(Childs.begin(), Childs.end(), child);
-    delete child;
     if (it != Childs.end())
         Childs.erase(it);
+
+    delete child;
 }
 
 void Entity::processEntity()
