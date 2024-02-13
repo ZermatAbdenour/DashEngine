@@ -1,5 +1,6 @@
 #include "Inspector.h"
 #include "Hierarchy.h"
+#include "ComponentEditor.h"
 
 namespace DashEditor {
     Inspector::Inspector()

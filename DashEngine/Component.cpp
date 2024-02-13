@@ -1,4 +1,5 @@
 #include "Component.h"
+#include "ComponentEditor.h"
 #include <iostream>
 using namespace DashEngine;
 

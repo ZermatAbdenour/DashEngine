@@ -1,15 +1,16 @@
-#include"ComponentEditor.h"
 #pragma once
 
+namespace DashEditor {
+    class ComponentEditor;
+}
 namespace DashEngine {
-    using namespace DashEditor;
     class Entity; //Forward Declaration of the class Entity
 
 	class Component
 	{
     public:
         Entity* entity;
-        ComponentEditor* Editor;
+        DashEditor::ComponentEditor* Editor;
 	private:
 		bool StartCalled = false;
 

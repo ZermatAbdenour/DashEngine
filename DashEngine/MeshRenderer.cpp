@@ -12,7 +12,7 @@
 namespace DashEngine {
     MeshRenderer::MeshRenderer()
     {
-        Editor = new MeshRendererEditor();
+        Editor = new DashEditor::MeshRendererEditor();
     }
 
     void MeshRenderer::Start()
