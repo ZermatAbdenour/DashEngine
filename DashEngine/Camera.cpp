@@ -2,6 +2,7 @@
 #include <glm/gtx/euler_angles.hpp>
 #include"Engine.h"
 #include "Entity.h"
+#include "PrespectiveCameraEditor.h"
 using namespace DashEngine;
 
 Camera* Camera::ActiveCamera = nullptr;
@@ -28,6 +29,7 @@ glm::mat4 Camera::GetViewMatrice()
 
     return view;
 }
+
 
 glm::mat4 DashEngine::Camera::GetProjectionMatrice()
 {

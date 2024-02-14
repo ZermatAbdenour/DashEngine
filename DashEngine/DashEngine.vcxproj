@@ -149,6 +149,7 @@
     <ClCompile Include="Hierarchy.cpp" />
     <ClCompile Include="Inspector.cpp" />
     <ClCompile Include="MeshRendererEditor.cpp" />
+    <ClCompile Include="PrespectiveCameraEditor.cpp" />
     <ClCompile Include="ToolBar.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="Window.h" />
@@ -190,6 +191,7 @@
     <ClInclude Include="PointLight.h" />
     <ClInclude Include="PositionalLight.h" />
     <ClInclude Include="PrespectiveCamera.h" />
+    <ClInclude Include="PrespectiveCameraEditor.h" />
     <ClInclude Include="ResourceManagement.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Shader.h" />

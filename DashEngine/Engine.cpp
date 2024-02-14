@@ -133,7 +133,6 @@ namespace DashEngine {
             //RenderImGui
             ImGui::Render();
             ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
             // glfw: swap buffers and poll IO events 
             glfwSwapBuffers(Window);
             //Inputs

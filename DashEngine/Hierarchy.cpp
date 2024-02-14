@@ -5,8 +5,6 @@
 namespace DashEditor {
     using namespace DashEngine;
     std::vector<Entity*> Hierarchy::SelectedEntitys;
-    Hierarchy::Hierarchy() {
-    }
     void Hierarchy::ShowWindow()
     {
         m_entityDisplayIndex = 0;

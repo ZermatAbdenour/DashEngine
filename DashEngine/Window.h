@@ -3,7 +3,6 @@
 namespace DashEditor {
     class Window {
     public:
-        Window();
         bool IsVisible = true;
         virtual void ShowWindow();
 

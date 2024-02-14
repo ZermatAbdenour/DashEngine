@@ -156,6 +156,9 @@
     <ClCompile Include="MeshRendererEditor.cpp">
       <Filter>Source Files\Editor\ComponentsEditor</Filter>
     </ClCompile>
+    <ClCompile Include="PrespectiveCameraEditor.cpp">
+      <Filter>Source Files\Editor\ComponentsEditor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -237,6 +240,9 @@
       <Filter>Header Files\Editor\ComponentsEditor</Filter>
     </ClInclude>
     <ClInclude Include="MeshRendererEditor.h">
+      <Filter>Header Files\Editor\ComponentsEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="PrespectiveCameraEditor.h">
       <Filter>Header Files\Editor\ComponentsEditor</Filter>
     </ClInclude>
   </ItemGroup>

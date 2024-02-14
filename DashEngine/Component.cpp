@@ -1,8 +1,12 @@
 #include "Component.h"
 #include "ComponentEditor.h"
-#include <iostream>
+
 using namespace DashEngine;
 
+
+DashEngine::Component::Component()
+{
+}
 
 void Component::Update()
 {
@@ -26,7 +30,7 @@ void Component::processComponent()
 
 void Component::SetComponentEditor(DashEditor::ComponentEditor* editor)
 {
-    // Assuming you want to delete the existing editor before creating a new one
+
     if (Editor) {
         delete Editor;
         Editor = nullptr;

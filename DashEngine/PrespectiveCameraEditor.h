@@ -1,7 +1,7 @@
 #pragma once
 #include"ComponentEditor.h"
 namespace DashEditor {
-    class PrespectiveCameraEditor :ComponentEditor
+    class PrespectiveCameraEditor :public ComponentEditor
     {
     public:
         void DrawComponent() override;

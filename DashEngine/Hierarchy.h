@@ -8,7 +8,6 @@ namespace DashEditor {
     public:
         static std::vector<Entity*> SelectedEntitys;
     public:
-        Hierarchy();
         void ShowWindow()override;
         void DisplayEntity(Entity* e,int displayIndex);
     private:

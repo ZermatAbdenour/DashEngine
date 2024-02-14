@@ -11,6 +11,7 @@ namespace DashEngine {
     public:
         Entity* entity;
         DashEditor::ComponentEditor* Editor;
+        Component();
 	private:
 		bool StartCalled = false;
 

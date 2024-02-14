@@ -5,7 +5,7 @@ namespace DashEngine {
     class PrespectiveCamera : public Camera
     {
     public:
-        float FovY = glm::radians(60.0f);
+        float FovY = 60.0f;
         glm::mat4 ProjectionMat;
 
     public:

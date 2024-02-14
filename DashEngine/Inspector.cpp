@@ -18,7 +18,8 @@ namespace DashEditor {
         }
 
         for (int i = 0;i < Hierarchy::SelectedEntitys[0]->Components.size();i++) {
-            Hierarchy::SelectedEntitys[0]->Components[i]->Editor->DrawEditor();
+            if(Hierarchy::SelectedEntitys[0]->Components[i]->Editor)
+                Hierarchy::SelectedEntitys[0]->Components[i]->Editor->DrawEditor();
         }
 
         ImGui::End();

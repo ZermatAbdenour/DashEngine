@@ -4,7 +4,7 @@
 #include "Component.h"
 
 namespace DashEngine {
-    class Camera :public Component
+    class Camera : public Component
     {
     public:
         float NearPlane = 0.1f;

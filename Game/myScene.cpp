@@ -9,7 +9,6 @@
 myScene::myScene()
 {
     Entity* camera = new Entity("Camera");
-    AddEntitie(camera);
     camera->addComponent<PrespectiveCamera>();
 
     camera->LocalPosition = glm::vec3(0,0,0);
@@ -17,7 +16,7 @@ myScene::myScene()
     camera->addComponent<move>();
 
     Entity* object = new Entity();
-    camera->addChild(object);
+    AddEntitie(object);
     object->LocalPosition = glm::vec3(0, 0, 3);
     object->EulerAngles = glm::vec3(0, 9, 0);
     object->Scale = glm::vec3(1);
@@ -29,6 +28,7 @@ myScene::myScene()
     model->rootEntity->Scale = glm::vec3(1, 1, 1);
     AddEntitie(model->rootEntity);
 
+    AddEntitie(camera);
     /*ModelLoader::Model model2 = ModelLoader::LoadModel("Resources/Models/backpack/backpack.obj");
     AddEntitie(model2.rootEntity);
     model2.rootEntity->Scale = glm::vec3(0.3);
