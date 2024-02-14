@@ -6,7 +6,6 @@ namespace DashEditor {
     {
     public:
         void DrawComponent() override;
-
     private:
 
     };

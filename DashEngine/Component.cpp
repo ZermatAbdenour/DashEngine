@@ -23,3 +23,15 @@ void Component::processComponent()
 	//Call the Update function of a component
 	Update();
 }
+
+void Component::SetComponentEditor(DashEditor::ComponentEditor* editor)
+{
+    // Assuming you want to delete the existing editor before creating a new one
+    if (Editor) {
+        delete Editor;
+        Editor = nullptr;
+    }
+
+    Editor = editor;
+    editor->Target = this;
+}

@@ -2,6 +2,7 @@
 #include "Component.h"
 #include<stdio.h>
 #include <imgui.h>
+
 namespace DashEditor {
     void ComponentEditor::DrawEditor()
     {
@@ -14,4 +15,5 @@ namespace DashEditor {
     {
 
     }
+
 }

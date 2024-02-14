@@ -7,7 +7,7 @@ namespace DashEditor {
     class ComponentEditor
     {
     public:
-        DashEngine::Component* component;
+        DashEngine::Component* Target;
         void DrawEditor();
         virtual void DrawComponent();
 

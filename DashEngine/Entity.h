@@ -73,5 +73,4 @@ namespace DashEngine {
 
 }
 
-
 #include "Entity.inl"

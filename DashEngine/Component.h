@@ -18,6 +18,7 @@ namespace DashEngine {
 		virtual void Update();
 		virtual void Start();
 		void processComponent();
+        void SetComponentEditor(DashEditor::ComponentEditor* editor);
 	private:
 
 	};
