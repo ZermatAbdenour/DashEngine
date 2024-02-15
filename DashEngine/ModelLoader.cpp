@@ -2,6 +2,7 @@
 #include <iostream>
 #include "MeshRenderer.h"
 #include "Engine.h"
+#include "FileTexture.h"
 
 namespace DashEngine {
     ModelLoader::Model* ModelLoader::LoadModel(std::string path,bool cleanLoading)
@@ -96,17 +97,17 @@ namespace DashEngine {
         {
             aiMaterial* material = model->scene->mMaterials[mesh->mMaterialIndex];
             std::vector<Texture*> diffuseMaps = loadMaterialTextures(material,
-                aiTextureType_DIFFUSE, Texture::TextureTypes::Diffuse, model);
+                aiTextureType_DIFFUSE, TextureTypes::Diffuse, model);
             //std::cout << diffuseMaps.size()<<std::endl;
             textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
             std::vector<Texture*> specularMaps = loadMaterialTextures(material,
-                aiTextureType_SPECULAR, Texture::TextureTypes::Specular,model);
+                aiTextureType_SPECULAR, TextureTypes::Specular,model);
             textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
         }
 
         return new Mesh(vertices, indices, textures);
     }
-    std::vector<Texture*> ModelLoader::loadMaterialTextures(aiMaterial* mat, aiTextureType type, Texture::TextureTypes textureType,Model* model)
+    std::vector<Texture*> ModelLoader::loadMaterialTextures(aiMaterial* mat, aiTextureType type, TextureTypes textureType,Model* model)
     {
         std::vector<Texture*> textures;
         for (unsigned int i = 0; i < mat->GetTextureCount(type); i++)
@@ -117,7 +118,7 @@ namespace DashEngine {
             if (!ResourceManagement::Textures::TextureExist(str.C_Str())) {
                 std::string fullPath = model->directory + "/" + str.C_Str();
                 std::cout << fullPath << std::endl;
-                Texture* texture = new Texture(fullPath.c_str(), textureType);
+                FileTexture* texture = new FileTexture(fullPath.c_str(), textureType);
                 ResourceManagement::Textures::AddTexture(str.C_Str(),texture);
                 textures.push_back(texture);
             }

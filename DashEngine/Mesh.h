@@ -1,7 +1,7 @@
 #pragma once
 #include<glm/glm.hpp>
 #include <vector>
-#include "texture.h"
+#include "Texture.h"
 #include "Shader.h"
 
 namespace DashEngine {

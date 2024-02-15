@@ -1,4 +1,5 @@
 #include "ResourceManagement.h"
+#include "FileTexture.h"
 using namespace DashEngine;
 
 
@@ -209,8 +210,8 @@ void ResourceManagement::LoadResources()
     ResourceManagement::Shaders::AddShader("SpriteShader", new Shader("Resources/Shaders/spritevertex.vert", "Resources/Shaders/spritefragment.frag"));
 
     //Textures
-    ResourceManagement::Textures::AddTexture("Diffuse", new Texture("Resources/Textures/Maps/container.png"));
-    ResourceManagement::Textures::AddTexture("Specular", new Texture("Resources/Textures/Maps/container2_specular.png",Texture::TextureTypes::Specular));
+    ResourceManagement::Textures::AddTexture("Diffuse", new FileTexture("Resources/Textures/Maps/container.png"));
+    ResourceManagement::Textures::AddTexture("Specular", new FileTexture("Resources/Textures/Maps/container2_specular.png",TextureTypes::Specular));
 
     //ResourceManagement::Textures::AddTexture("Circle", new Texture("Resources/Sprites/PingPong/awesomeface.png"));
     //primitives

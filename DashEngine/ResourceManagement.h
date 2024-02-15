@@ -1,7 +1,7 @@
 #pragma once
 #include "Shader.h"
 #include "Mesh.h"
-#include"texture.h"
+#include"Texture.h"
 #include <map>
 namespace DashEngine {
 

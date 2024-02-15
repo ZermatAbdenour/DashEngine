@@ -14,6 +14,7 @@
 #include "ToolBar.h"
 #include "Inspector.h"
 #include "FrameBuffer.h"
+#include "BufferTexture.h"
 
 namespace DashEngine {
     using namespace DashEditor;
@@ -72,7 +73,6 @@ namespace DashEngine {
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
         //Stencil test
-
         glEnable(GL_STENCIL_TEST);
 
         //Cull faces
@@ -95,6 +95,10 @@ namespace DashEngine {
 
     Engine::~Engine() {
         glfwTerminate();
+
+        ImGui_ImplGlfw_Shutdown();
+        ImGui_ImplOpenGL3_Shutdown();
+        ImGui::DestroyContext();
     }
 
     bool Engine::isRunning() { return !glfwWindowShouldClose(Window); }
@@ -106,21 +110,13 @@ namespace DashEngine {
         Inspector inspector = Inspector();
         ToolBar toolBar = ToolBar();
 
-        Texture* t = new Texture(800, 600);
-
-        unsigned int depthstenciltexture;
-        glGenTextures(1, &depthstenciltexture);
-        glBindTexture(GL_TEXTURE_2D, depthstenciltexture);
-        glTexImage2D(
-            GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, 800, 600, 0,
-            GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL
-        );
-        glBindTexture(GL_TEXTURE_2D, 0);
+        BufferTexture* colorTexture = new BufferTexture(800, 600, BufferTextureTypes::Color);
+        BufferTexture* depthStencilTexture = new BufferTexture(800, 600, BufferTextureTypes::DepthStencil);
 
         //Create framebuffers
         FrameBuffer* b = new FrameBuffer();
-        b->SetColorAttachment(t->ID);
-        b->SetDepthStencilAttachment(depthstenciltexture);
+        b->SetColorAttachment(colorTexture->ID);
+        b->SetDepthStencilAttachment(depthStencilTexture->ID);
 
         while (isRunning())
         {
@@ -147,20 +143,12 @@ namespace DashEngine {
 
 
             ImGui::Begin("scene");
-            ImGui::Image(ImTextureID(t->ID), ImVec2(800, 600), ImVec2(0, 1), ImVec2(1, 0));
+            ImGui::Image(ImTextureID(colorTexture->ID), ImVec2(800, 600), ImVec2(0, 1), ImVec2(1, 0));
             ImGui::End();
-
-            //DashEditor
-            // Set the next window position to anchor it to the left
-
- 
 
             hierarchy.ShowWindow();
             toolBar.ShowWindow();
             inspector.ShowWindow();
-
-
-
             //RenderImGui
             ImGui::Render();
             ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -168,12 +156,7 @@ namespace DashEngine {
             glfwSwapBuffers(Window);
             //Inputs
             Inputs::Instance->ProcessInputs();
-
         }
-
-        ImGui_ImplGlfw_Shutdown();
-        ImGui_ImplOpenGL3_Shutdown();
-        ImGui::DestroyContext();
     }
 
     static void framebuffer_size_callback(GLFWwindow* window, int width, int height)

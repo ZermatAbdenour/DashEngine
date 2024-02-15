@@ -53,11 +53,11 @@ namespace DashEngine {
             std::string name;
             std::string nbr;
             Textures[i]->ActivateAndBind(i);
-            if (Textures[i]->TextureType == Texture::TextureTypes::Diffuse) {
+            if (Textures[i]->TextureType == TextureTypes::Diffuse) {
                 name = "diffuseMap";
                 nbr = diffuseNbr++;
             }
-            else if (Textures[i]->TextureType == Texture::TextureTypes::Specular) {
+            else if (Textures[i]->TextureType == TextureTypes::Specular) {
                 name = "SpecularMap";
                 nbr = specularNbr++;
             }
