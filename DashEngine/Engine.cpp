@@ -59,6 +59,7 @@ namespace DashEngine {
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
         ImGuiIO& io = ImGui::GetIO();
+        io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
         (void)io;
         ImGui::StyleColorsDark();
         ImGui_ImplGlfw_InitForOpenGL(Window, true);
@@ -101,6 +102,7 @@ namespace DashEngine {
     void Engine::Load(Scene* scene) {
         ActiveScene = scene;
 
+
         Hierarchy hierarchy = Hierarchy();
         Inspector inspector = Inspector();
         ToolBar toolBar = ToolBar();
@@ -119,11 +121,11 @@ namespace DashEngine {
             ImGui_ImplOpenGL3_NewFrame();
             ImGui::NewFrame();
 
+            ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
             scene->RenderScene();
 
             //DashEditor
             // Set the next window position to anchor it to the left
-
 
             hierarchy.ShowWindow();
             toolBar.ShowWindow();

@@ -6,6 +6,8 @@
 namespace DashEditor {
     void PrespectiveCameraEditor::DrawComponent()
     {
+
+
         DashEngine::PrespectiveCamera* target = dynamic_cast<DashEngine::PrespectiveCamera*>(Target);
         //ItemLabel("Fov", ItemLabelFlag::Right);
         ImGui::DragFloat("Fov", &target->FovY);

@@ -171,6 +171,10 @@
     <ClCompile Include="TimeUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Dependencies\Imgui\backends\imgui_impl_glfw.h" />
+    <ClInclude Include="..\Dependencies\Imgui\backends\imgui_impl_opengl2.h" />
+    <ClInclude Include="..\Dependencies\Imgui\backends\imgui_impl_opengl3.h" />
+    <ClInclude Include="..\Dependencies\Imgui\backends\imgui_impl_opengl3_loader.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentEditor.h" />

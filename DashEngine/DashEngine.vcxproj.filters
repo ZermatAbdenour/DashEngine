@@ -43,6 +43,9 @@
     <Filter Include="Header Files\Editor\ComponentsEditor">
       <UniqueIdentifier>{8ec39761-d311-4eca-8eae-fa95b71df8fb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ImGUI\Backend">
+      <UniqueIdentifier>{08426ed7-65ed-4b8b-822d-5c54197f67c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -111,30 +114,6 @@
     <ClCompile Include="ModelLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Dependencies\Imgui\imgui_widgets.cpp">
-      <Filter>ImGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Dependencies\Imgui\imgui.cpp">
-      <Filter>ImGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Dependencies\Imgui\imgui_demo.cpp">
-      <Filter>ImGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Dependencies\Imgui\imgui_draw.cpp">
-      <Filter>ImGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Dependencies\Imgui\imgui_tables.cpp">
-      <Filter>ImGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Dependencies\Imgui\backends\imgui_impl_glfw.cpp">
-      <Filter>ImGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Dependencies\Imgui\backends\imgui_impl_opengl2.cpp">
-      <Filter>ImGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Dependencies\Imgui\backends\imgui_impl_opengl3.cpp">
-      <Filter>ImGUI</Filter>
-    </ClCompile>
     <ClCompile Include="Window.h">
       <Filter>Header Files\Editor</Filter>
     </ClCompile>
@@ -158,6 +137,30 @@
     </ClCompile>
     <ClCompile Include="PrespectiveCameraEditor.cpp">
       <Filter>Source Files\Editor\ComponentsEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\Imgui\imgui_tables.cpp">
+      <Filter>ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\Imgui\imgui_widgets.cpp">
+      <Filter>ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\Imgui\imgui.cpp">
+      <Filter>ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\Imgui\imgui_demo.cpp">
+      <Filter>ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\Imgui\imgui_draw.cpp">
+      <Filter>ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\Imgui\backends\imgui_impl_opengl2.cpp">
+      <Filter>ImGUI\Backend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\Imgui\backends\imgui_impl_opengl3.cpp">
+      <Filter>ImGUI\Backend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\Imgui\backends\imgui_impl_glfw.cpp">
+      <Filter>ImGUI\Backend</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +247,18 @@
     </ClInclude>
     <ClInclude Include="PrespectiveCameraEditor.h">
       <Filter>Header Files\Editor\ComponentsEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\Imgui\backends\imgui_impl_glfw.h">
+      <Filter>ImGUI\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\Imgui\backends\imgui_impl_opengl2.h">
+      <Filter>ImGUI\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\Imgui\backends\imgui_impl_opengl3.h">
+      <Filter>ImGUI\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\Imgui\backends\imgui_impl_opengl3_loader.h">
+      <Filter>ImGUI\Backend</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
