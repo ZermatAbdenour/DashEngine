@@ -13,6 +13,7 @@
 #include "Hierarchy.h"
 #include "ToolBar.h"
 #include "Inspector.h"
+#include "FrameBuffer.h"
 
 namespace DashEngine {
     using namespace DashEditor;
@@ -104,10 +105,35 @@ namespace DashEngine {
         Hierarchy hierarchy = Hierarchy();
         Inspector inspector = Inspector();
         ToolBar toolBar = ToolBar();
+
+        Texture* t = new Texture(800, 600);
+
+        unsigned int depthstenciltexture;
+        glGenTextures(1, &depthstenciltexture);
+        glBindTexture(GL_TEXTURE_2D, depthstenciltexture);
+        glTexImage2D(
+            GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, 800, 600, 0,
+            GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL
+        );
+        glBindTexture(GL_TEXTURE_2D, 0);
+
+        //Create framebuffers
+        FrameBuffer* b = new FrameBuffer();
+        b->SetColorAttachment(t->ID);
+        b->SetDepthStencilAttachment(depthstenciltexture);
+
         while (isRunning())
         {
             TimeUtils::deltaTime = glfwGetTime() - TimeUtils::time;
             TimeUtils::time = glfwGetTime();
+
+            b->Bind();
+            glViewport(0, 0, 800, 600);
+            glEnable(GL_DEPTH_TEST);
+            glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+            glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT|GL_STENCIL_BUFFER_BIT);
+            scene->RenderScene();
+            b->Unbind();
 
             //Rendering
 
@@ -119,15 +145,20 @@ namespace DashEngine {
             ImGui_ImplOpenGL3_NewFrame();
             ImGui::NewFrame();
 
-            scene->RenderScene();
+
+            ImGui::Begin("scene");
+            ImGui::Image(ImTextureID(t->ID), ImVec2(800, 600), ImVec2(0, 1), ImVec2(1, 0));
+            ImGui::End();
 
             //DashEditor
             // Set the next window position to anchor it to the left
 
+ 
 
             hierarchy.ShowWindow();
             toolBar.ShowWindow();
             inspector.ShowWindow();
+
 
 
             //RenderImGui
