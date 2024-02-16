@@ -3,10 +3,10 @@
 #include <glm/glm.hpp>
 #include "DashEngineConfig.h"
 #include "Camera.h"
+#include "Editor.h"
 #include "TimeUtils.h"
 #include "ResourceManagement.h"
 #include"Inputs.h"
-#include "Editor.h"
 #include <assimp/Importer.hpp>
 #include <imgui.h>
 #include <backends/imgui_impl_glfw.h>
@@ -90,10 +90,6 @@ namespace DashEngine {
         //Init Inputs
 
         Inputs::InitInputs();
-        
-        //Init editor
-        Editor::Init();
-
 
         std::cout << "Engine Fully loaded" << std::endl;
     }
@@ -114,36 +110,16 @@ namespace DashEngine {
         ActiveScene = scene;
 
 
-        m_editor->Init();
-
-        BufferTexture* colorTexture = new BufferTexture(800, 600, BufferTextureTypes::Color);
-        BufferTexture* depthStencilTexture = new BufferTexture(800, 600, BufferTextureTypes::DepthStencil);
-
-        //Create framebuffers
-        FrameBuffer* b = new FrameBuffer();
-        b->SetColorAttachment(colorTexture->ID);
-        b->SetDepthStencilAttachment(depthStencilTexture->ID);
-
+        //Hierarchy hierarchy = Hierarchy();
+        //Inspector inspector = Inspector();
+        //ToolBar toolBar = ToolBar();
+        Editor::Init();
         while (isRunning())
         {
             TimeUtils::deltaTime = glfwGetTime() - TimeUtils::time;
             TimeUtils::time = glfwGetTime();
 
-            b->Bind();
-            glViewport(0, 0, sceneWidth, sceneHeight);
-            colorTexture->Bind();
-            colorTexture->UpdateTextureBuffer(sceneWidth, sceneHeight,BufferTextureTypes::Color);
-            colorTexture->Unbind();
-            depthStencilTexture->Bind();
-            depthStencilTexture->UpdateTextureBuffer(sceneWidth, sceneHeight, BufferTextureTypes::DepthStencil);
-            depthStencilTexture->Unbind();
-            glEnable(GL_DEPTH_TEST);
-            glEnable(GL_STENCIL_TEST);
-            glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-            glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT|GL_STENCIL_BUFFER_BIT);
-            Camera::SetCurrentSize(sceneWidth, sceneHeight);
-            scene->RenderScene();
-            b->Unbind();
+            std::cout << 1/TimeUtils::deltaTime << std::endl;
 
             //Rendering
 
@@ -151,26 +127,29 @@ namespace DashEngine {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
             //Imgui new frame
-            ImGui_ImplGlfw_NewFrame();
-            ImGui_ImplOpenGL3_NewFrame();
-            ImGui::NewFrame();
+            //ImGui_ImplGlfw_NewFrame();
+            //ImGui_ImplOpenGL3_NewFrame();
+            //ImGui::NewFrame();
 
-            ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
-            scene->RenderScene();
-            //ImGui::SetNextWindowSize(ImVec2(800, 600));
-            ImGui::Begin("scene");
-            sceneWidth = ImGui::GetContentRegionAvail().x;
-            sceneHeight = ImGui::GetContentRegionAvail().y;
-            //ImGuiViewport* viewPort = ImGui::GetWindowViewport();
-            ImGui::Image(ImTextureID(colorTexture->ID), ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
-            
-            ImGui::End();
+            //ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
+            //scene->RenderScene();
+            ////ImGui::SetNextWindowSize(ImVec2(800, 600));
+            //ImGui::Begin("scene");
+            //sceneWidth = ImGui::GetContentRegionAvail().x;
+            //sceneHeight = ImGui::GetContentRegionAvail().y;
+            ////ImGuiViewport* viewPort = ImGui::GetWindowViewport();
+            //ImGui::Image(ImTextureID(colorTexture->ID), ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
+            //
+            //ImGui::End();
 
             Editor::Update();
 
-            //RenderImGui
-            ImGui::Render();
-            ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+            //hierarchy.ShowWindow();
+            //toolBar.ShowWindow();
+            //inspector.ShowWindow();
+            ////RenderImGui
+            //ImGui::Render();
+            //ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
             // glfw: swap buffers and poll IO events 
             glfwSwapBuffers(Window);
             //Inputs

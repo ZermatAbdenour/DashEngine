@@ -5,7 +5,7 @@
 void Print::Update()
 {
 
-   // std::cout << "FPS: " << 1 / TimeUtils::deltaTime << std::endl;
+    std::cout << "FPS: " << 1 / TimeUtils::deltaTime << std::endl;
 
 
 

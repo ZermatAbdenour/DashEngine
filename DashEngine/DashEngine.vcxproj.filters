@@ -122,6 +122,9 @@
     <ClCompile Include="Editor.cpp">
       <Filter>Source Files\Editor</Filter>
     </ClCompile>
+    <ClCompile Include="SceneView.cpp">
+      <Filter>Source Files\Editor\Windows</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Dependencies\Imgui\backends\imgui_impl_glfw.h">
@@ -228,6 +231,9 @@
     </ClInclude>
     <ClInclude Include="Editor.h">
       <Filter>Header Files\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneView.h">
+      <Filter>Header Files\Editor\Windows</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

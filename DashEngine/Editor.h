@@ -2,6 +2,7 @@
 #include "ToolBar.h"
 #include "Hierarchy.h"
 #include "Inspector.h"
+#include "SceneView.h"
 
 namespace DashEditor {
     class Editor {
@@ -12,5 +13,6 @@ namespace DashEditor {
         static ToolBar* m_toolbar;
         static Hierarchy* m_hierarchy;
         static Inspector* m_inspector;
+        static SceneView* m_sceneView;
     };
 }

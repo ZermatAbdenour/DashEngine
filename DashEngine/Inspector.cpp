@@ -10,7 +10,6 @@ namespace DashEditor {
     }
     void Inspector::ShowWindow()
     {
-        ImGuiWindowFlags flags =  ImGuiWindowFlags_NoCollapse;
         ImGui::Begin("Inspector", &IsVisible);
 
         if (Hierarchy::SelectedEntitys.size() == 0) {
