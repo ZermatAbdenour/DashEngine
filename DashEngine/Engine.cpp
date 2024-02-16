@@ -104,6 +104,7 @@ namespace DashEngine {
 
     bool Engine::isRunning() { return !glfwWindowShouldClose(Window); }
 
+    int sceneWidth = 100, sceneHeight = 100;
     void Engine::Load(Scene* scene) {
         ActiveScene = scene;
 
@@ -126,11 +127,18 @@ namespace DashEngine {
             TimeUtils::time = glfwGetTime();
 
             b->Bind();
-            glViewport(0, 0, 800, 600);
+            glViewport(0, 0, sceneWidth, sceneHeight);
+            colorTexture->Bind();
+            colorTexture->UpdateTextureBuffer(sceneWidth, sceneHeight,BufferTextureTypes::Color);
+            colorTexture->Unbind();
+            depthStencilTexture->Bind();
+            depthStencilTexture->UpdateTextureBuffer(sceneWidth, sceneHeight, BufferTextureTypes::DepthStencil);
+            depthStencilTexture->Unbind();
             glEnable(GL_DEPTH_TEST);
+            glEnable(GL_STENCIL_TEST);
             glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT|GL_STENCIL_BUFFER_BIT);
-            Camera::SetCurrentSize(800, 600);
+            Camera::SetCurrentSize(sceneWidth, sceneHeight);
             scene->RenderScene();
             b->Unbind();
 
@@ -148,7 +156,10 @@ namespace DashEngine {
             scene->RenderScene();
             //ImGui::SetNextWindowSize(ImVec2(800, 600));
             ImGui::Begin("scene");
-            ImGui::Image(ImTextureID(colorTexture->ID), ImGui::GetWindowSize(), ImVec2(0, 1), ImVec2(1, 0));
+            sceneWidth = ImGui::GetContentRegionAvail().x;
+            sceneHeight = ImGui::GetContentRegionAvail().y;
+            //ImGuiViewport* viewPort = ImGui::GetWindowViewport();
+            ImGui::Image(ImTextureID(colorTexture->ID), ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
             
             ImGui::End();
 
