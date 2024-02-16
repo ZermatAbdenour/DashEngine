@@ -6,6 +6,7 @@
 #include "TimeUtils.h"
 #include "ResourceManagement.h"
 #include"Inputs.h"
+#include "Editor.h"
 #include <assimp/Importer.hpp>
 #include <imgui.h>
 #include <backends/imgui_impl_glfw.h>
@@ -89,6 +90,10 @@ namespace DashEngine {
         //Init Inputs
 
         Inputs::InitInputs();
+        
+        //Init editor
+        Editor::Init();
+
 
         std::cout << "Engine Fully loaded" << std::endl;
     }
@@ -109,9 +114,7 @@ namespace DashEngine {
         ActiveScene = scene;
 
 
-        Hierarchy hierarchy = Hierarchy();
-        Inspector inspector = Inspector();
-        ToolBar toolBar = ToolBar();
+        m_editor->Init();
 
         BufferTexture* colorTexture = new BufferTexture(800, 600, BufferTextureTypes::Color);
         BufferTexture* depthStencilTexture = new BufferTexture(800, 600, BufferTextureTypes::DepthStencil);
@@ -163,9 +166,8 @@ namespace DashEngine {
             
             ImGui::End();
 
-            hierarchy.ShowWindow();
-            toolBar.ShowWindow();
-            inspector.ShowWindow();
+            Editor::Update();
+
             //RenderImGui
             ImGui::Render();
             ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

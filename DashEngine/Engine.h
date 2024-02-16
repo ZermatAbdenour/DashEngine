@@ -6,7 +6,12 @@
 #include <GLFW/glfw3.h>
 #include "Scene.h"
 
+namespace DashEditor {
+    class Editor;
+}
+
 namespace DashEngine {
+    using namespace DashEditor;
 	class Engine
 	{
     public:
@@ -19,6 +24,8 @@ namespace DashEngine {
 		~Engine();
 		bool isRunning();
         void Load(Scene* scene);
+    private:
+        DashEditor::Editor* m_editor;
 	};
 }
 

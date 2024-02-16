@@ -1,0 +1,16 @@
+#pragma once
+#include "ToolBar.h"
+#include "Hierarchy.h"
+#include "Inspector.h"
+
+namespace DashEditor {
+    class Editor {
+    public:
+        static void Init();
+        static void Update();
+    private:
+        static ToolBar* m_toolbar;
+        static Hierarchy* m_hierarchy;
+        static Inspector* m_inspector;
+    };
+}

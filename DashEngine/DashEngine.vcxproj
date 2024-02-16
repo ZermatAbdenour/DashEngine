@@ -145,6 +145,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ComponentEditor.cpp" />
     <ClCompile Include="DirectionalLight.cpp" />
+    <ClCompile Include="Editor.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FileTexture.cpp" />
@@ -183,6 +184,7 @@
     <ClInclude Include="ComponentEditor.h" />
     <ClInclude Include="DashEngineConfig.h" />
     <ClInclude Include="DirectionalLight.h" />
+    <ClInclude Include="Editor.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="FileTexture.h" />

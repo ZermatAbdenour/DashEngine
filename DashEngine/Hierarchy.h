@@ -1,6 +1,6 @@
 #pragma once
 #include "Window.h"
-#include "Engine.h"
+#include "Entity.h"
 
 namespace DashEditor {
     using namespace DashEngine;

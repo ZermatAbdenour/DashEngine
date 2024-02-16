@@ -1,5 +1,6 @@
 #pragma once
 #include <imgui.h>
+
 namespace DashEditor {
     class Window {
     public:

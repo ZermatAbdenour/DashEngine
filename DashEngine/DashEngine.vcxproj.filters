@@ -119,6 +119,9 @@
     <ClCompile Include="Window.h">
       <Filter>Header Files\Editor\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="Editor.cpp">
+      <Filter>Source Files\Editor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Dependencies\Imgui\backends\imgui_impl_glfw.h">
@@ -222,6 +225,9 @@
     </ClInclude>
     <ClInclude Include="ToolBar.h">
       <Filter>Header Files\Editor\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Editor.h">
+      <Filter>Header Files\Editor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
