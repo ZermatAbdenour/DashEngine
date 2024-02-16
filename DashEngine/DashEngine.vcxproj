@@ -159,7 +159,6 @@
     <ClCompile Include="Inputs.cpp" />
     <ClCompile Include="LightsManager.cpp" />
     <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="MeshData.cpp" />
     <ClCompile Include="MeshRenderer.cpp" />
     <ClCompile Include="ModelLoader.cpp" />
     <ClCompile Include="OrthographicCamera.cpp" />
@@ -175,6 +174,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BufferTexture.h" />
+    <ClInclude Include="..\Dependencies\Imgui\backends\imgui_impl_glfw.h" />
+    <ClInclude Include="..\Dependencies\Imgui\backends\imgui_impl_opengl2.h" />
+    <ClInclude Include="..\Dependencies\Imgui\backends\imgui_impl_opengl3.h" />
+    <ClInclude Include="..\Dependencies\Imgui\backends\imgui_impl_opengl3_loader.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentEditor.h" />
@@ -189,7 +192,6 @@
     <ClInclude Include="Inspector.h" />
     <ClInclude Include="LightsManager.h" />
     <ClInclude Include="Mesh.h" />
-    <ClInclude Include="MeshData.h" />
     <ClInclude Include="MeshRenderer.h" />
     <ClInclude Include="MeshRendererEditor.h" />
     <ClInclude Include="ModelLoader.h" />
@@ -207,10 +209,6 @@
     <ClInclude Include="ToolBar.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Game\Resources\Shaders\fragment.frag" />
-    <None Include="..\Game\Resources\Shaders\spritefragment.frag" />
-    <None Include="..\Game\Resources\Shaders\spritevertex.vert" />
-    <None Include="..\Game\Resources\Shaders\vertex.vert" />
     <None Include="Entity.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

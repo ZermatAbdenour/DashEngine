@@ -13,12 +13,7 @@ namespace DashEditor {
             return;
         // Get the screen size
         ImVec2 screenSize = ImGui::GetIO().DisplaySize;
-        ImGui::SetNextWindowPos(ImVec2(0, 32), ImGuiCond_Always);
-        ImGui::SetNextWindowSizeConstraints(ImVec2(screenSize.x / 5, screenSize.y -32), ImVec2(screenSize.x / 4, screenSize.y -32));
-        ImGuiWindowFlags flags = ImGuiWindowFlags_::ImGuiWindowFlags_NoMove  | ImGuiWindowFlags_::ImGuiWindowFlags_NoCollapse;
-
-
-        ImGui::Begin("Hierarchy", &IsVisible, flags);
+        ImGui::Begin("Hierarchy", &IsVisible);
 
         //add empty entity
         if (ImGui::Button("+")) {

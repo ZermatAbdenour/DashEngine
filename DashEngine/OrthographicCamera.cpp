@@ -11,7 +11,7 @@ OrthographicCamera::OrthographicCamera()
 
 void OrthographicCamera::CalculateProjectionMatrice()
 {
-    float aspectRatio = (float)Engine::Instance->WindowWidth / Engine::Instance->WindowHeight;
+    float aspectRatio = (float)s_currentWidth / s_currentHeight;
     float orthoLeft = -aspectRatio;
     float orthoRight = aspectRatio;
     float orthoBottom = -1.0f;

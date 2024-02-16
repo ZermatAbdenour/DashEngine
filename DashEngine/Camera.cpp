@@ -6,6 +6,8 @@
 using namespace DashEngine;
 
 Camera* Camera::ActiveCamera = nullptr;
+float Camera::s_currentWidth = 800;
+float Camera::s_currentHeight = 600;
 
 Camera::Camera()
 {
@@ -19,6 +21,10 @@ void Camera::SetActiveCamera()
 }
 
 void Camera::CalculateProjectionMatrice()
+{
+}
+
+void Camera::CalculateProjectionMatrice(float width, float height)
 {
 }
 
@@ -42,8 +48,8 @@ glm::mat4 DashEngine::Camera::GetProjectionMatrice()
 glm::vec3 Camera::ScreenToWorldPosition(glm::vec2 position)
 {
     // Convert to NDC
-    float ndc_x = (2.0 * position.x) / -Engine::Instance->WindowWidth - 1.0;
-    float ndc_y = 1.0 - (2.0 * position.y) / -Engine::Instance->WindowHeight;
+    float ndc_x = (2.0 * position.x) / -s_currentWidth - 1.0;
+    float ndc_y = 1.0 - (2.0 * position.y) / -s_currentHeight;
 
     // Convert to clip coordinates
     glm::vec4 clipCoords(ndc_x, ndc_y, -1.0, 1.0);
@@ -58,4 +64,10 @@ glm::vec3 Camera::ScreenToWorldPosition(glm::vec2 position)
     glm::vec4 worldCoords = inverseViewMatrix * eyeCoords;
 
     return worldCoords;
+}
+
+void Camera::SetCurrentSize(float width,float height)
+{
+    s_currentWidth = width;
+    s_currentHeight = height;
 }

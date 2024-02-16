@@ -61,6 +61,7 @@ namespace DashEngine {
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
         ImGuiIO& io = ImGui::GetIO();
+        io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
         (void)io;
         ImGui::StyleColorsDark();
         ImGui_ImplGlfw_InitForOpenGL(Window, true);
@@ -106,6 +107,7 @@ namespace DashEngine {
     void Engine::Load(Scene* scene) {
         ActiveScene = scene;
 
+
         Hierarchy hierarchy = Hierarchy();
         Inspector inspector = Inspector();
         ToolBar toolBar = ToolBar();
@@ -128,6 +130,7 @@ namespace DashEngine {
             glEnable(GL_DEPTH_TEST);
             glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT|GL_STENCIL_BUFFER_BIT);
+            Camera::SetCurrentSize(800, 600);
             scene->RenderScene();
             b->Unbind();
 
@@ -141,9 +144,12 @@ namespace DashEngine {
             ImGui_ImplOpenGL3_NewFrame();
             ImGui::NewFrame();
 
-
+            ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
+            scene->RenderScene();
+            //ImGui::SetNextWindowSize(ImVec2(800, 600));
             ImGui::Begin("scene");
-            ImGui::Image(ImTextureID(colorTexture->ID), ImVec2(800, 600), ImVec2(0, 1), ImVec2(1, 0));
+            ImGui::Image(ImTextureID(colorTexture->ID), ImGui::GetWindowSize(), ImVec2(0, 1), ImVec2(1, 0));
+            
             ImGui::End();
 
             hierarchy.ShowWindow();
