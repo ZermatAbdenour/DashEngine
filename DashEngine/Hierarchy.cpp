@@ -59,6 +59,9 @@ namespace DashEditor {
 
 
     void Hierarchy::DisplayEntity(Entity* e,int displayIndex) {
+        if (!e->getVisibilityInHierarchy())
+            return;
+
         ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags();
         if (e->Childs.size() == 0)
             flags |= ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_Leaf;

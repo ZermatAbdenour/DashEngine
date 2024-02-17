@@ -2,7 +2,7 @@
 
 #include "DashEngineConfig.h"
 #include "SceneView.h"
-#include "Camera.h"
+#include "PrespectiveCamera.h"
 #include "Engine.h"
 using namespace DashEditor;
 
@@ -11,11 +11,12 @@ m_depthStencilTexture(STARTWINDOWWIDTH, STARTWINDOWHEIGHT, DashEngine::DepthSten
 {
     m_frameBuffer.SetColorAttachment(m_colorTexture.ID);
     m_frameBuffer.SetDepthStencilAttachment(m_depthStencilTexture.ID);
-    windowSize = { STARTWINDOWWIDTH ,STARTWINDOWHEIGHT };
+    windowSize = { STARTWINDOWWIDTH , STARTWINDOWHEIGHT };
     m_frameBuffer.Bind();
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_STENCIL_TEST);
     m_frameBuffer.Unbind();
+
 }
 
 

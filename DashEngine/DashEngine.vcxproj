@@ -155,6 +155,7 @@
     <ClCompile Include="MeshRendererEditor.cpp" />
     <ClCompile Include="PrespectiveCameraEditor.cpp" />
     <ClCompile Include="SceneView.cpp" />
+    <ClCompile Include="SceneViewCamera.cpp" />
     <ClCompile Include="ToolBar.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="Window.h" />
@@ -206,6 +207,7 @@
     <ClInclude Include="ResourceManagement.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneView.h" />
+    <ClInclude Include="SceneViewCamera.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="SpotLight.h" />
     <ClInclude Include="Texture.h" />

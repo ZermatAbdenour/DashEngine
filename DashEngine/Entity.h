@@ -38,9 +38,8 @@ namespace DashEngine {
 		std::vector<Component*> Components;
         float LatestProcessTime;
 	private:
-
 		static int _nextEntityID;
-
+        bool m_isVisibleInHierarchy;
 	public:
 		Entity();
         Entity(std::string name);
@@ -65,6 +64,10 @@ namespace DashEngine {
         T* getComponent() const;
         template <typename T>
         void removeComponent();
+
+        //Editor
+        void SetVisibilityInHierarchy(bool visible);
+        bool getVisibilityInHierarchy();
 
     private:
         void InitEntity();

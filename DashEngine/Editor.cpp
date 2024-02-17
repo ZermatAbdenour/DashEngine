@@ -29,6 +29,9 @@ void Editor::Update() {
     m_inspector->ShowWindow();
     m_sceneView->ShowWindow();
     m_sceneView->ProcessScene();
+
+}
+void Editor::EndFrame() {
     //RenderImGui
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

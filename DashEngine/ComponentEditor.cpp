@@ -8,10 +8,8 @@ namespace DashEditor {
     {
         if (!ImGui::CollapsingHeader(m_name))
             return;
-        ImGui::BeginChild("Component");
         DrawComponent();
         ImGui::Separator();
-        ImGui::EndChild();
     }
     void ComponentEditor::DrawComponent()
     {

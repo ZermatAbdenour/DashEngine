@@ -1,22 +1,22 @@
-#include "move.h"
-#include <iostream>
-#include <DashEngine/Entity.h>
-#include<DashEngine/TimeUtils.h>
-#include<DashEngine/Inputs.h>
-#include<DashEngine/Camera.h>
+#include "SceneViewCamera.h"
+#include "Inputs.h"
+#include "TimeUtils.h"
+#include <glm/fwd.hpp>
 
-bool m_disabled;
-void move::Start()
+using namespace DashEngine;
+
+void SceneViewCamera::Start()
 {
-    m_disabled = false;
-
-
+    m_disablCursor = false;
 }
 
-void move::Update()
-{
+void SceneViewCamera::Update() {
+    if (!Inputs::GetMouseButton(0)) {
+        Inputs::Mouse::SetCursorMode(CursorMode::Normal);
+        return;
+    }
+    Inputs::Mouse::SetCursorMode(CursorMode::Disabled);
 
-    glm::vec3 movedir = glm::vec3(0);
     float speed = 2;
     if (Inputs::GetKey(KeyCode::W))
         entity->LocalPosition += entity->forward * speed * TimeUtils::deltaTime;
@@ -32,19 +32,4 @@ void move::Update()
     entity->EulerAngles.y += Inputs::Mouse::delta.x * 0.1;
     entity->EulerAngles.x += Inputs::Mouse::delta.y * 0.1;
 
-    if (Inputs::GetKeyDown(KeyCode::Escape))
-    {
-        if (m_disabled) {
-            Inputs::Mouse::SetCursorMode(CursorMode::Normal);
-            m_disabled = false;
-        }
-        else
-        {
-            Inputs::Mouse::SetCursorMode(CursorMode::Disabled);
-            m_disabled = true;
-        }
-    }
-
 }
-
-

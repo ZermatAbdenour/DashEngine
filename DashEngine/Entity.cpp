@@ -34,10 +34,21 @@ void Entity::Delete()
 
 
 
+void Entity::SetVisibilityInHierarchy(bool visible)
+{
+    m_isVisibleInHierarchy = visible;
+}
+
+bool DashEngine::Entity::getVisibilityInHierarchy()
+{
+    return m_isVisibleInHierarchy;
+}
+
 void Entity::InitEntity()
 {
     entityID = _nextEntityID;
     _nextEntityID++;
+    m_isVisibleInHierarchy = true;
 
     //Reset Transform
     LocalPosition = glm::vec3(0.0f);

@@ -71,7 +71,7 @@ namespace DashEngine {
             glm::vec3 normal = glm::vec3(mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z);
             vertex.normal = normal;
 
-            if (mesh->mTextureCoords[0]) // does the mesh contain texture coordinates?
+            if (mesh->mTextureCoords[0]) 
             {
                 glm::vec2 textCoord;
                 textCoord.x = mesh->mTextureCoords[0][i].x;

@@ -9,6 +9,7 @@ namespace DashEditor {
     public:
         static void Init();
         static void Update();
+        static void EndFrame();
     private:
         static ToolBar* m_toolbar;
         static Hierarchy* m_hierarchy;

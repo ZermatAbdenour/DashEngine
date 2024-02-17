@@ -12,6 +12,7 @@ namespace DashEngine {
         //Light manager
         LightManager LightManager;
 	public:
+        Scene();
 		void RenderScene();
 		void AddEntitie(Entity* entity);
 		void RemoveRootEntity(Entity* entity);

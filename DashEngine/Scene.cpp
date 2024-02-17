@@ -1,5 +1,18 @@
 #include "Scene.h"
+#include "PrespectiveCamera.h"
+#include "SceneViewCamera.h"
 namespace DashEngine {
+
+    Scene::Scene() {
+        Entity* camera = new Entity("Camera");
+        camera->addComponent<PrespectiveCamera>();
+
+        camera->LocalPosition = glm::vec3(0, 0, 0);
+        camera->EulerAngles = glm::vec3(0, 0, 0);
+        camera->addComponent<SceneViewCamera>();
+        AddEntitie(camera);
+        camera->SetVisibilityInHierarchy(false);
+    }
 
     void Scene::RenderScene()
     {

@@ -8,16 +8,6 @@
 #include<DashEngine/ModelLoader.h>
 myScene::myScene()
 {
-    Entity* camera = new Entity("Camera");
-    camera->addComponent<PrespectiveCamera>();
-
-    camera->LocalPosition = glm::vec3(0,0,0);
-    camera->EulerAngles = glm::vec3(0,0, 0);
-    camera->addComponent<move>();
-    AddEntitie(camera);
-
-
-
     //std::cout << "loadModel";
     ModelLoader::Model* model = ModelLoader::LoadModel("Resources/Models/backpack/backpack.obj",true);
     model->rootEntity->Scale = glm::vec3(1, 1, 1);

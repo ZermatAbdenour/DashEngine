@@ -3,6 +3,7 @@
 #include "Window.h"
 #include "FrameBuffer.h"
 #include "BufferTexture.h"
+#include "Camera.h"
 #include "glm/glm.hpp"
 namespace DashEditor {
     class SceneView : public Window {

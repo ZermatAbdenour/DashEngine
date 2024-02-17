@@ -1,5 +1,6 @@
 #include "Inputs.h"
 #include "DashEngineConfig.h"
+#include <imgui.h>
 
 namespace DashEngine {
     Inputs* Inputs::Instance = nullptr;
@@ -75,7 +76,11 @@ namespace DashEngine {
     void DashEngine::Inputs::ProcesssMouseButton(unsigned int button)
     {
         if (glfwGetMouseButton(window, button) == GLFW_PRESS) {
-            if (mouse[button] == false) {
+            ImGui::Begin("Scene view");
+            bool acceptMouseInputs = ImGui::IsWindowHovered();
+            ImGui::End();
+
+            if (mouse[button] == false && acceptMouseInputs) {
                 mouse[button] = true;
                 mouseDown[button] = true;
             }

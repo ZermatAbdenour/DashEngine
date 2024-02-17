@@ -125,8 +125,10 @@ namespace DashEngine {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
             Editor::Update();
-            glfwSwapBuffers(Window);
             Inputs::Instance->ProcessInputs();
+            Editor::EndFrame();
+            glfwSwapBuffers(Window);
+
         }
     }
 
