@@ -6,6 +6,8 @@
 namespace DashEditor {
     void ComponentEditor::DrawEditor()
     {
+        if (!ImGui::CollapsingHeader(m_name))
+            return;
         ImGui::BeginChild("Component");
         DrawComponent();
         ImGui::Separator();
@@ -14,6 +16,11 @@ namespace DashEditor {
     void ComponentEditor::DrawComponent()
     {
 
+    }
+
+    ComponentEditor::ComponentEditor(const char* name)
+    {
+        m_name = name;
     }
 
 }

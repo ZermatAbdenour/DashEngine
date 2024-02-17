@@ -91,7 +91,7 @@ void Entity::processEntity()
 
 	//std::cout << "processing Entity id :" << _entityID << std::endl;
 	for (int i = 0;i < Components.size();i++) {
-  		Components[i]-> processComponent();
+  		Components[i]->processComponent();
 	}
 
 	for (int i = 0;i < Childs.size();i++)

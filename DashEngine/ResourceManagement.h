@@ -19,7 +19,7 @@ namespace DashEngine {
         {
             static std::map<std::string, Texture*> textures;
             //Textures
-            static void AddTexture(std::string name, Texture* texture);
+            static void AddTexture(std::string path, Texture* texture);
             static Texture* GetTexture(std::string name);
             static bool TextureExist(std::string name);
         };

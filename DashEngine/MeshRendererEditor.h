@@ -6,6 +6,7 @@ namespace DashEditor {
     {
     public:
         void DrawComponent() override;
+        MeshRendererEditor() :ComponentEditor("Mesh Renderer") {}
     private:
 
     };

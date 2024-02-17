@@ -5,6 +5,7 @@ namespace DashEditor {
     {
     public:
         void DrawComponent() override;
+        PrespectiveCameraEditor() :ComponentEditor("Prespective Camera"){}
     };
 }
 

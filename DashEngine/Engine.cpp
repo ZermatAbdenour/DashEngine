@@ -91,6 +91,9 @@ namespace DashEngine {
 
         Inputs::InitInputs();
 
+        //Init Editor
+        Editor::Init();
+
         std::cout << "Engine Fully loaded" << std::endl;
     }
 
@@ -105,54 +108,24 @@ namespace DashEngine {
 
     bool Engine::isRunning() { return !glfwWindowShouldClose(Window); }
 
-    int sceneWidth = 100, sceneHeight = 100;
     void Engine::Load(Scene* scene) {
         ActiveScene = scene;
 
-
-        //Hierarchy hierarchy = Hierarchy();
-        //Inspector inspector = Inspector();
-        //ToolBar toolBar = ToolBar();
-        Editor::Init();
+  
         while (isRunning())
         {
             TimeUtils::deltaTime = glfwGetTime() - TimeUtils::time;
             TimeUtils::time = glfwGetTime();
 
-            std::cout << 1/TimeUtils::deltaTime << std::endl;
+            //std::cout << 1/TimeUtils::deltaTime << std::endl;
 
             //Rendering
 
             glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-            //Imgui new frame
-            //ImGui_ImplGlfw_NewFrame();
-            //ImGui_ImplOpenGL3_NewFrame();
-            //ImGui::NewFrame();
-
-            //ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
-            //scene->RenderScene();
-            ////ImGui::SetNextWindowSize(ImVec2(800, 600));
-            //ImGui::Begin("scene");
-            //sceneWidth = ImGui::GetContentRegionAvail().x;
-            //sceneHeight = ImGui::GetContentRegionAvail().y;
-            ////ImGuiViewport* viewPort = ImGui::GetWindowViewport();
-            //ImGui::Image(ImTextureID(colorTexture->ID), ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
-            //
-            //ImGui::End();
-
             Editor::Update();
-
-            //hierarchy.ShowWindow();
-            //toolBar.ShowWindow();
-            //inspector.ShowWindow();
-            ////RenderImGui
-            //ImGui::Render();
-            //ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-            // glfw: swap buffers and poll IO events 
             glfwSwapBuffers(Window);
-            //Inputs
             Inputs::Instance->ProcessInputs();
         }
     }

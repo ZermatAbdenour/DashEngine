@@ -14,21 +14,15 @@ myScene::myScene()
     camera->LocalPosition = glm::vec3(0,0,0);
     camera->EulerAngles = glm::vec3(0,0, 0);
     camera->addComponent<move>();
-    AddEntitie(camera);
 
-    Entity* object = new Entity();
-    AddEntitie(object);
-    object->LocalPosition = glm::vec3(0, 0, 3);
-    object->EulerAngles = glm::vec3(0, 9, 0);
-    object->Scale = glm::vec3(1);
-    object->addComponent<MeshRenderer>();
-    object->addComponent<Print>();
+
 
     //std::cout << "loadModel";
     ModelLoader::Model* model = ModelLoader::LoadModel("Resources/Models/backpack/backpack.obj",true);
     model->rootEntity->Scale = glm::vec3(1, 1, 1);
     AddEntitie(model->rootEntity);
 
+    AddEntitie(camera);
     /*ModelLoader::Model model2 = ModelLoader::LoadModel("Resources/Models/backpack/backpack.obj");
     AddEntitie(model2.rootEntity);
     model2.rootEntity->Scale = glm::vec3(0.3);

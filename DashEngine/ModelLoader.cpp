@@ -115,15 +115,15 @@ namespace DashEngine {
             aiString str;
             mat->GetTexture(type, i, &str);
 
-            if (!ResourceManagement::Textures::TextureExist(str.C_Str())) {
-                std::string fullPath = model->directory + "/" + str.C_Str();
+            std::string fullPath = model->directory + "/" + str.C_Str();
+            if (!ResourceManagement::Textures::TextureExist(fullPath)) {
                 std::cout << fullPath << std::endl;
                 FileTexture* texture = new FileTexture(fullPath.c_str(), textureType);
-                ResourceManagement::Textures::AddTexture(str.C_Str(),texture);
+                ResourceManagement::Textures::AddTexture(fullPath,texture);
                 textures.push_back(texture);
             }
             else {
-                Texture* texture = ResourceManagement::Textures::GetTexture(str.C_Str());
+                Texture* texture = ResourceManagement::Textures::GetTexture(fullPath);
                 textures.push_back(texture);
             }
         }
