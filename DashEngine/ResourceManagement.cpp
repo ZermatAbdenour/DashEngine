@@ -97,12 +97,12 @@ std::vector<float> cubeuvs = {
 };
 
 std::vector<unsigned int> cubeindices = {
-        0, 1, 2,  0, 2, 3,  // Front
-        4, 5, 6,  4, 6, 7,  // Back
-        8, 9, 10, 8, 10, 11,  // Left
-        12, 13, 14, 12, 14, 15,  // Right
-        16, 17, 18, 16, 18, 19,  // Bottom
-        20, 21, 22, 20, 22, 23   // Top
+    2, 1, 0,  0, 3, 2,   // Front
+    4, 5, 6,  6, 7, 4,   // Back
+    10, 9, 8, 8, 11, 10, // Left
+    12, 13, 14, 14, 15, 12, // Right
+    16, 17, 18, 18, 19, 16, // Bottom
+    22, 21, 20, 20, 23, 22  // Top
 };
 
 std::vector<float> cubenormals = {
