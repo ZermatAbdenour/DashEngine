@@ -139,6 +139,6 @@ glm::vec3 Entity::GetGlobalPosition()
 }
 void Entity::SetGlobalPosition(glm::vec3 position)
 {
-    LocalPosition = position - Parent->GetGlobalPosition();
+    position = position - Parent->GetGlobalPosition();
 }
 
