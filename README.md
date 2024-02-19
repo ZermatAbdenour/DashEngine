@@ -11,6 +11,8 @@ Welcome to DashEngine, a lightweight C++ framework for creating dynamic 3D and 2
 - **Scene Management:** Easily manage scenes and entities.
 - **Input Handling:** Efficiently handle user input with the GLFW input system.
 - **Resource Management:** Manage assets with DashEngine's resource management system, supporting various asset types like textures, models, and shaders
+# screenshots :
+![Screenshot](Docs/DashEngineScreenShot.png)
 
 ## Dependencies
 

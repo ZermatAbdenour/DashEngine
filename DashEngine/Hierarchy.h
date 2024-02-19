@@ -9,10 +9,7 @@ namespace DashEditor {
         static std::vector<Entity*> SelectedEntitys;
     public:
         void ShowWindow()override;
-        void DisplayEntity(Entity* e,int displayIndex);
+        void DisplayEntity(Entity* e);
     private:
-        bool m_clear;
-        int m_entityDisplayIndex;
-        int m_shiftFistSelected = -1,m_shiftLastSelected =-1;
     };
 }
